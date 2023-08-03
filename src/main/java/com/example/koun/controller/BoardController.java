@@ -1,21 +1,21 @@
-package com.example.koun.controller.board;
+package com.example.koun.controller;
 
 
 import com.example.koun.domain.Board;
-import com.example.koun.service.board.BoardWriteService;
+import com.example.koun.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class BoardWriteController{
+public class BoardController {
 
-    private BoardWriteService boardWriteService;
+    private BoardService boardService;
 
     @Autowired
-    public BoardWriteController(BoardWriteService boardWriteService) {
-        this.boardWriteService = boardWriteService;
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
     }
 
 
@@ -30,7 +30,7 @@ public class BoardWriteController{
     //html form태그에 있는 url과 일치해야 함
     @PostMapping("/admin/write")
     public String boardWriteDo(Board board){
-        boardWriteService.write(board);
+        boardService.write(board);
         return "";
 
     }

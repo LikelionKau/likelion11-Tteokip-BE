@@ -1,18 +1,18 @@
-package com.example.koun.service.board;
+package com.example.koun.service;
 
 import com.example.koun.domain.Board;
-import com.example.koun.repository.board.BoardWriteRepository;
+import com.example.koun.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BoardWriteService {
+public class BoardService {
 
     @Autowired
-    private BoardWriteRepository boardWriteRepository;
+    private BoardRepository boardRepository;
 
     public void write(Board board){
-        boardWriteRepository.save(board);
+        boardRepository.save(board);
 
 
     }
