@@ -86,4 +86,6 @@ public class Item {
         this.sections = sections;
         this.likes = likes;
     }
+
+
 }

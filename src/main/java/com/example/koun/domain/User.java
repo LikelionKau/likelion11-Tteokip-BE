@@ -59,6 +59,7 @@ public class User {
     @ColumnDefault("USER")
     private RoleType roleType=RoleType.USER;
 
+/*----------------------------------여기까지 필드-------------------------------------------*/
 
     @OneToMany(mappedBy = "user")
     private List<Raffle> raffles = new ArrayList<>();
@@ -72,7 +73,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Like> likes = new ArrayList<>();
 
-
+/*--------------------------여기까지 @OneToMany 어노테이션은 JPA에서 일대다 관계를 표현할 때 사용되는 어노테이션입니다.------------------------------------*/
     @Builder
     public User(String userName, String password, String userEmail, String phoneNum
                 , LocalDateTime userBirth, String account, char gender, String userAddress
@@ -93,6 +94,10 @@ public class User {
         this.orders = orders;
         this.boards = boards;
         this.likes = likes;
+    }
+
+    public static void main(String[] args) {
+        User user = User.builder().userName("adf").gender('W').build();
     }
 
 }

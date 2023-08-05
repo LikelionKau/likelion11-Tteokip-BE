@@ -1,5 +1,6 @@
 package com.example.koun.domain;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,24 +25,31 @@ import lombok.NoArgsConstructor;
     uniqueConstraints=
     @UniqueConstraint(columnNames={"user_id", "item_id"})
 )
+
 public class Raffle {
 
     @Id @GeneratedValue
     @Column(name ="raffle_id")
     private Long id;
 
+
     @Column(name="raffle_status")
     private String raffleStatus;
 
     //1인당 최대2매
+
     @Column(name="raffle_count")
     private int raffleCount;
+
 
     @Column(name="raffle_draw_date")
     private LocalDateTime raffleDrawDate;
 
+
     @Column(name="application_date")
     private LocalDateTime applicationDate;
+
+    /*--------------------------------------------------------------------------------------------*/
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id" )
@@ -50,7 +58,6 @@ public class Raffle {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="item_id")
     private Item item;
-
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -63,10 +70,11 @@ public class Raffle {
 
 
 
-
+    /*빌더패턴*/
     @Builder
     public Raffle(String raffleStatus, int raffleCount, LocalDateTime raffleDrawDate,
         LocalDateTime applicationDate, User user, Item item, Section section, Order order) {
+
         this.raffleStatus = raffleStatus;
         this.raffleCount = raffleCount;
         this.raffleDrawDate = raffleDrawDate;
@@ -116,5 +124,5 @@ public class Raffle {
 
 
 
-
 }
+

@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -52,9 +53,17 @@ public class Order {
         user.getOrders().add(this);
     }
 
+
     public void setRaffle (Raffle raffle){
         this.raffle = raffle;
+        Order order = new Order();
     }
+
+
+
+
+
+
 
 
 
