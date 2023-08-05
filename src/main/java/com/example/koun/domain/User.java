@@ -26,38 +26,41 @@ public class User {
 
 
 
-    @Column(name="user_name",nullable=false)
+    @Column(name="user_name",nullable=false,unique = true)
     private String userName;
 
-    @Column(nullable=false)
+
     private String password;
 
-    @Column(name="user_email",nullable=false)
+    @Column(name="user_email",nullable=false,unique = true)
     private String userEmail;
 
-    @Column(name="phone_num",nullable=false)
+    @Column(name="phone_num")
     private String phoneNum;
 
-    @Column(name="user_birth",nullable=false)
+    @Column(name="user_birth")
     private LocalDateTime userBirth;
+
+    private  String oauth;
 
 
     private String account;
 
-    @Column(nullable=false)
     private char gender;
 
-    @Column(name="user_address",nullable=false)
+    @Column(name="user_address")
     private String userAddress;
 
 
     @Column(name="is_deleted")
     @ColumnDefault("false")
-    private Boolean isDeleted=false;
+    private Boolean isDeleted;
 
     @Enumerated(EnumType.STRING)
     @ColumnDefault("USER")
-    private RoleType roleType=RoleType.USER;
+    private RoleType roleType;
+
+
 
 
     @OneToMany(mappedBy = "user")
@@ -76,8 +79,7 @@ public class User {
     @Builder
     public User(String userName, String password, String userEmail, String phoneNum
                 , LocalDateTime userBirth, String account, char gender, String userAddress
-                , Boolean isDeleted, RoleType roleType, List<Raffle> raffles, List<Order> orders
-                 , List<Board> boards, List<Like> likes) {
+                , Boolean isDeleted, RoleType roleType, String oauth) {
 
         this.userName = userName;
         this.password = password;
@@ -89,10 +91,7 @@ public class User {
         this.userAddress = userAddress;
         this.isDeleted = isDeleted;
         this.roleType = roleType;
-        this.raffles = raffles;
-        this.orders = orders;
-        this.boards = boards;
-        this.likes = likes;
+        this.oauth = oauth;
     }
 
 }
