@@ -33,6 +33,7 @@ public class Raffle {
     @Column(name="raffle_status")
     private String raffleStatus;
 
+
     //1인당 최대2매
     @Column(name="raffle_count")
     private int raffleCount;
@@ -110,6 +111,10 @@ public class Raffle {
         }
         this.order = order;
         order.setRaffle(this);
+    }
+
+    public void winRaffleStatus(String newStatus) {
+        this.raffleStatus = newStatus;
     }
 
 

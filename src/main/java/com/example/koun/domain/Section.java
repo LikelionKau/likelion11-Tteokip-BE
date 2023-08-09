@@ -28,6 +28,9 @@ public class Section {
 
     private int price;
 
+    @Column(name="section_name")
+    private String sectionName;
+
     @Column(name="seat_quantity")
     private int seatQuantity;
 
