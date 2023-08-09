@@ -32,17 +32,20 @@ public class Order {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne(mappedBy = "order",fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "raffle_id")
     private Raffle raffle;
 
     @Builder
-    public Order(LocalDateTime orderDate, DeliveryStatus deliveryStatus, String address, User user,
-        Raffle raffle) {
+    public Order(LocalDateTime orderDate, DeliveryStatus deliveryStatus, String address, User user,Raffle raffle
+        ) {
         this.orderDate = orderDate;
         this.deliveryStatus = deliveryStatus;
         this.address = address;
-        this.user = user;
-        this.raffle = raffle;
+        setUser(user);
+        setRaffle(raffle);
+
+
     }
 
 
@@ -52,10 +55,23 @@ public class Order {
         user.getOrders().add(this);
     }
 
-    public void setRaffle (Raffle raffle){
+    public void setRaffle(Raffle raffle) {
         this.raffle = raffle;
+        raffle.setOrder(this);
+
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", orderDate=" + orderDate +
+                ", deliveryStatus=" + deliveryStatus +
+                ", address='" + address + '\'' +
+                ", user=" + user.getUserName() +  // assuming User class has a getUserName() method
+                ", raffle=" + raffle.getId() +    // assuming Raffle class has a getId() method
+                '}';
+    }
 
 
 

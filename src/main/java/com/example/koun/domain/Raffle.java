@@ -10,72 +10,71 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import java.time.LocalDateTime;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.util.Lazy;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(
-    name="Raffle",
-    uniqueConstraints=
-    @UniqueConstraint(columnNames={"user_id", "item_id"})
+        name = "Raffle",
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"user_id", "item_id"})
 )
 public class Raffle {
 
-    @Id @GeneratedValue
-    @Column(name ="raffle_id")
+    @Id
+    @GeneratedValue
+    @Column(name = "raffle_id")
     private Long id;
 
-    @Column(name="raffle_status")
+    @Column(name = "raffle_status")
     private String raffleStatus;
 
 
     //1인당 최대2매
-    @Column(name="raffle_count")
+    @Column(name = "raffle_count")
     private int raffleCount;
 
-    @Column(name="raffle_draw_date")
+    @Column(name = "raffle_draw_date")
     private LocalDateTime raffleDrawDate;
 
-    @Column(name="application_date")
+    @Column(name = "application_date")
     private LocalDateTime applicationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id" )
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="item_id")
+    @JoinColumn(name = "item_id")
     private Item item;
 
 
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="section_id")
+    @JoinColumn(name = "section_id")
     private Section section;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="order_id")
+    @OneToOne(mappedBy = "raffle",fetch = FetchType.LAZY)
     private Order order;
-
-
 
 
     @Builder
     public Raffle(String raffleStatus, int raffleCount, LocalDateTime raffleDrawDate,
-        LocalDateTime applicationDate, User user, Item item, Section section, Order order) {
-        this.raffleStatus = raffleStatus;
+                  LocalDateTime applicationDate, User user, Item item, Section section) {
+        this.raffleStatus = "false";
         this.raffleCount = raffleCount;
         this.raffleDrawDate = raffleDrawDate;
-        this.applicationDate = applicationDate;
-        this.user = user;
-        this.item = item;
-        this.section = section;
-        this.order = order;
+        this.applicationDate = LocalDateTime.now();
+        setUser(user);
+        setItem(item);
+        setSection(section);
     }
 
 
@@ -105,23 +104,16 @@ public class Raffle {
         section.getRaffles().add(this);
     }
 
-    public void setOrder(Order order) {
-        if (this.order != null) {
-            this.order.setRaffle(null);
-        }
-        this.order = order;
-        order.setRaffle(this);
+    public void setOrder(Order order){
+        this.order=order;
     }
 
+
+
+    //비즈니스로직
     public void winRaffleStatus(String newStatus) {
         this.raffleStatus = newStatus;
     }
-
-
-    //생성 메서드
-
-
-
 
 
 }

@@ -43,11 +43,11 @@ public class Section {
 
 
     @Builder
-    public Section(int price, int seatQuantity, Item item, List<Raffle> raffles) {
+    public Section(int price, int seatQuantity, String sectionName ,Item item) {
         this.price = price;
         this.seatQuantity = seatQuantity;
-        this.item = item;
-        this.raffles = raffles;
+        this.sectionName=sectionName;
+        setItem(item);
     }
 
     public void setItem(Item item) {
