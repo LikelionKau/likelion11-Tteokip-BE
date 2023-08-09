@@ -113,6 +113,8 @@ public class Raffle {
     }
 
 
+    //생성 메서드
+
 
 
 
