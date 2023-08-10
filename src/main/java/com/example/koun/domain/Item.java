@@ -24,7 +24,7 @@ public class Item {
     private Long id;
 
     @Column(name="raffle_quantity")
-    private int raffleQuantity;
+    private String raffleQuantity;
 
     private String artist;
 
@@ -32,10 +32,6 @@ public class Item {
     private LocalDateTime dateTime;
 
     private String venue;
-
-
-    @Column(name="ticket_price")
-    private int ticketPrice;
 
 
 
@@ -68,15 +64,14 @@ public class Item {
 
 
     @Builder
-    public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
-                , int ticketPrice, int likeNum, String itemName, String post
-                , int ageRequirement, String description, List<Raffle> raffles
-                , List<Section> sections, List<Like> likes) {
+    public Item(String raffleQuantity, String artist, LocalDateTime dateTime, String venue
+        , int likeNum, String itemName, String post
+        , int ageRequirement, String description, List<Raffle> raffles
+        , List<Section> sections, List<Like> likes) {
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;
         this.venue = venue;
-        this.ticketPrice = ticketPrice;
         this.likeNum = likeNum;
         this.itemName = itemName;
         this.post = post;
@@ -86,6 +81,7 @@ public class Item {
         this.sections = sections;
         this.likes = likes;
     }
+
 
 
 }

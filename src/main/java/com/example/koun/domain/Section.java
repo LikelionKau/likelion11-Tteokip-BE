@@ -31,6 +31,9 @@ public class Section {
     @Column(name="seat_quantity")
     private int seatQuantity;
 
+    @Column(name="section_name")
+    private String sectionName;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="item_id")
     private Item item;
@@ -40,11 +43,12 @@ public class Section {
 
 
     @Builder
-    public Section(int price, int seatQuantity, Item item, List<Raffle> raffles) {
+    public Section(int price, int seatQuantity,String sectionName ,Item item) {
         this.price = price;
         this.seatQuantity = seatQuantity;
         this.item = item;
-        this.raffles = raffles;
+        this.sectionName = sectionName;
+        setItem(item);
     }
 
     public void setItem(Item item) {
@@ -54,4 +58,12 @@ public class Section {
         this.item = item;
         item.getSections().add(this);
     }
+    //비즈니스로직
+    public void newSectionPrice(int newPrice) {
+        this.price = newPrice;
+    }
+    public void newSectionSeatQuantity(int newQuantity) {
+        this.seatQuantity = newQuantity;
+    }
 }
+

@@ -42,8 +42,8 @@ public class Order {
         this.orderDate = orderDate;
         this.deliveryStatus = deliveryStatus;
         this.address = address;
-        this.user = user;
-        this.raffle = raffle;
+        this.setUser(user);
+        this.setRaffle(raffle);
     }
 
 

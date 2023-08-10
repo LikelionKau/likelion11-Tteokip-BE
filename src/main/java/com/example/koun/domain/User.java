@@ -29,7 +29,7 @@ public class User {
     @Column(name="user_name",nullable=false)
     private String userName;
 
-    @Column(nullable=false)
+    @Column
     private String password;
 
     @Column(name="user_email",nullable=false)
@@ -40,6 +40,9 @@ public class User {
 
     @Column(name="user_birth",nullable=false)
     private LocalDateTime userBirth;
+
+    @Column(name="oauth")
+    private String oauth;
 
 
     private String account;

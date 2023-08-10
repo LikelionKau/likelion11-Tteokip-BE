@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
+/*Controller에서 Client에게 데이터를 넘겨줄 때*/
+/*Order객체를 꺼내서 그중 필요한 것만 변수에 담아서 보내기 위한 클래스*/
 @Getter
 @NoArgsConstructor
 public class OrderResponseDto {
