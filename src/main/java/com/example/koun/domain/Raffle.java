@@ -61,13 +61,13 @@ public class Raffle {
     @JoinColumn(name = "section_id")
     private Section section;
 
-    @OneToOne(mappedBy = "raffle",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "raffle", fetch = FetchType.LAZY)
     private Order order;
 
 
     @Builder
-    public Raffle(String raffleStatus, int raffleCount, LocalDateTime raffleDrawDate,
-                  LocalDateTime applicationDate, User user, Item item, Section section) {
+    public Raffle(int raffleCount, LocalDateTime raffleDrawDate,
+                   User user, Item item, Section section) {
         this.raffleStatus = "false";
         this.raffleCount = raffleCount;
         this.raffleDrawDate = raffleDrawDate;
@@ -104,10 +104,9 @@ public class Raffle {
         section.getRaffles().add(this);
     }
 
-    public void setOrder(Order order){
-        this.order=order;
+    public void setOrder(Order order) {
+        this.order = order;
     }
-
 
 
     //비즈니스로직

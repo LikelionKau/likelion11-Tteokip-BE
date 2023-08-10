@@ -61,18 +61,6 @@ public class Order {
 
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", orderDate=" + orderDate +
-                ", deliveryStatus=" + deliveryStatus +
-                ", address='" + address + '\'' +
-                ", user=" + user.getUserName() +  // assuming User class has a getUserName() method
-                ", raffle=" + raffle.getId() +    // assuming Raffle class has a getId() method
-                '}';
-    }
-
 
 
 

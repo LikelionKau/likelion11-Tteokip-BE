@@ -8,19 +8,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
-public class RaffleRequestDto {
-    private String raffleStatus;
+public class RaffleSaveRequestDto {
     private int raffleCount;
     private LocalDateTime raffleDrawDate;
-    private LocalDateTime applicationDate;
     private Long userId;
     private Long itemId;
     private Long sectionId;
 
     @Builder
-    public RaffleRequestDto(String raffleStatus, int raffleCount, String raffleDrawDate,
-                            Long userId, Long itemId, Long sectionId) {
-        this.raffleStatus = raffleStatus;
+    public RaffleSaveRequestDto( int raffleCount, String raffleDrawDate,
+                                Long userId, Long itemId, Long sectionId) {
         this.raffleCount = raffleCount;
         this.raffleDrawDate = convertToDateTime(raffleDrawDate);
         this.userId = userId;
@@ -30,7 +27,6 @@ public class RaffleRequestDto {
 
     public Raffle toEntity(User user, Item item, Section section) {
         return Raffle.builder()
-                .raffleStatus(raffleStatus)
                 .raffleCount(raffleCount)
                 .raffleDrawDate(raffleDrawDate)
                 .user(user)
