@@ -71,7 +71,6 @@ public class Item {
         this.artist = artist;
         this.dateTime = dateTime;
         this.venue = venue;
-
         this.likeNum = likeNum;
         this.itemName = itemName;
         this.post = post;

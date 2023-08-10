@@ -26,7 +26,7 @@ public class User {
 
 
 
-    @Column(name="user_name",nullable=false,unique = true)
+    @Column(name="user_name",nullable=false)
     private String userName;
 
 

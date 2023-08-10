@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -126,6 +127,38 @@ public class RaffleService {
 
         raffleRepository.delete(raffle);
     }
+
+
+    //랜덤으로 응모 추첨
+    @Transactional
+    public void drawRaffleForSection(Long sectionId) {
+        Section section = sectionRepository.findById(sectionId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 콘서트 구역이 없습니다, id=" + sectionId));
+
+        List<Raffle> raffles = section.getRaffles();
+        int totalSeats = section.getSeatQuantity();
+        int allocatedSeats = 0;
+
+        Collections.shuffle(raffles); // 래플 목록을 무작위로 섞습니다.
+
+        for (Raffle raffle : raffles) {
+            if (allocatedSeats + raffle.getRaffleCount() <= totalSeats) {
+                allocatedSeats += raffle.getRaffleCount();
+                raffle.winRaffleStatus("true");
+            }
+            if (allocatedSeats == totalSeats) {
+                break;
+            }
+
+        }
+    }
+
+
+
+
+
+
+
 
 
 }
