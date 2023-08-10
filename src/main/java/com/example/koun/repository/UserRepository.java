@@ -1,4 +1,4 @@
-package com.example.koun.repository;
+package com.example.koun.Repository;
 
 
 import com.example.koun.domain.User;
