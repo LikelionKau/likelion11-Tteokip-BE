@@ -1,7 +1,7 @@
 package com.example.koun.OrderService;
 
 import com.example.koun.domain.*;
-import com.example.koun.repository.*;
+import com.example.koun.Repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
