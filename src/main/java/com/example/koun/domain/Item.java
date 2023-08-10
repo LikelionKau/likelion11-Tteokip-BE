@@ -6,9 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,37 +21,32 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Item {
 
-    @Id @GeneratedValue
-    @Column(name="item_id")
+    @Id
+    @GeneratedValue
+    @Column(name = "item_id")
     private Long id;
 
-    @Column(name="raffle_quantity")
+    @Column(name = "raffle_quantity")
     private int raffleQuantity;
 
     private String artist;
 
-    @Column(name="date_time")
+    @Column(name = "date_time")
     private LocalDateTime dateTime;
 
     private String venue;
 
 
-    @Column(name="ticket_price")
-    private int ticketPrice;
-
-
-
-    @Column(name="like_num")
+    @Column(name = "like_num")
     private int likeNum;
 
-    @Column(name="item_num")
+    @Column(name = "item_num")
     private String itemName;
 
     private String post;
 
 
-
-    @Column(name="age_requirement")
+    @Column(name = "age_requirement")
     private int ageRequirement;
 
 
@@ -66,24 +63,20 @@ public class Item {
     private List<Like> likes = new ArrayList<>();
 
 
-
     @Builder
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
-                , int ticketPrice, int likeNum, String itemName, String post
-                , int ageRequirement, String description, List<Raffle> raffles
-                , List<Section> sections, List<Like> likes) {
+            , int likeNum, String itemName, String post
+            , int ageRequirement, String description) {
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;
         this.venue = venue;
-        this.ticketPrice = ticketPrice;
         this.likeNum = likeNum;
         this.itemName = itemName;
         this.post = post;
         this.ageRequirement = ageRequirement;
         this.description = description;
-        this.raffles = raffles;
-        this.sections = sections;
-        this.likes = likes;
+
+
     }
 }

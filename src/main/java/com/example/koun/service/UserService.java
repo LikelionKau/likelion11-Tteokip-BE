@@ -1,7 +1,7 @@
 package com.example.koun.service;
 
 
-import com.example.koun.UserRepository;
+import com.example.koun.repository.UserRepository;
 import com.example.koun.domain.User;
 import com.example.koun.dto.UserResponseDto;
 import com.example.koun.dto.UserSaveRequestDto;
