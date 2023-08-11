@@ -1,4 +1,4 @@
-package com.example.koun.Repository;
+package com.example.koun.repository;
 
 
 import com.example.koun.domain.Section;

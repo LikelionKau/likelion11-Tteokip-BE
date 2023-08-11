@@ -3,9 +3,9 @@ package com.example.koun.RaffleService;
 import com.example.koun.domain.*;
 import com.example.koun.dto.RaffleSaveRequestDto;
 import com.example.koun.dto.RaffleFindResponseDto;
-import com.example.koun.Repository.*;
+import com.example.koun.repository.*;
 
-import com.example.koun.Service.RaffleService;
+import com.example.koun.service.RaffleService;
 
 import java.time.LocalDateTime;
 import java.util.List;

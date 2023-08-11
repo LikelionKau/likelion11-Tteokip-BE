@@ -1,9 +1,9 @@
-package com.example.koun.Service;
+package com.example.koun.service;
 
 import com.example.koun.domain.*;
 import com.example.koun.dto.RaffleSaveRequestDto;
 import com.example.koun.dto.RaffleFindResponseDto;
-import com.example.koun.Repository.*;
+import com.example.koun.repository.*;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
