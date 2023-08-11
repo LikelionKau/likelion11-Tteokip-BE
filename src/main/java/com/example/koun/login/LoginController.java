@@ -1,12 +1,11 @@
 package com.example.koun.login;
 
-
-import com.example.koun.domain.RoleType;
-import com.example.koun.dto.UserResponseDto;
+import com.example.koun.login.jwt.JwUtil;
+import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.dto.UserSaveRequestDto;
 import com.example.koun.login.auth.OAuthToken;
 import com.example.koun.login.auth.kakao.KakaoProfile;
-import com.example.koun.login.session.SessionManager;
+
 import com.example.koun.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -14,30 +13,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-
-import org.springframework.stereotype.Controller;
+import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-@Controller
+@RestController
 public class LoginController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private SessionManager sessionManager;
-
-
 
 
 
@@ -145,7 +131,7 @@ public class LoginController {
 
 
         // 가입자 혹은 비가입자 체크 해서 처리 -> 로그인 처리
-        UserResponseDto originUser = userService.findOne(kakaoUser.getUserEmail());
+        UserSaveResponseDto originUser = userService.findUser(kakaoUser.getUserEmail());
 
 
         if (originUser.getUserName() == null) {
@@ -157,10 +143,12 @@ public class LoginController {
             sessionManager.createSession(originUser,httpResponse );
         }
 
-        System.out.println(originUser.getUserName() + originUser.getUserEmail());
-        System.out.println("자동 로그인 시작");
+        /**
+         * jwt를 사용한 토큰 생성
+         */
 
-
+        // JWT 발급
+        String token = JwUtil.createToken(originUser);
 
 
 
@@ -175,20 +163,6 @@ public class LoginController {
         return "loginRedirect";
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
