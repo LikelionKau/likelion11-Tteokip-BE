@@ -1,8 +1,8 @@
 package com.example.koun;
 
 
-import com.example.koun.Repository.ItemRepository;
-import com.example.koun.Repository.SectionRepository;
+import com.example.koun.repository.ItemRepository;
+import com.example.koun.repository.SectionRepository;
 import com.example.koun.Service.SectionService;
 import com.example.koun.domain.Item;
 import com.example.koun.domain.Section;
