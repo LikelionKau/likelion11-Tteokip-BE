@@ -1,11 +1,9 @@
-package com.example.koun;
+package com.example.koun.SectionService;
 
 
 import com.example.koun.repository.ItemRepository;
-import com.example.koun.repository.SectionRepository;
-import com.example.koun.Service.SectionService;
+import com.example.koun.service.SectionService;
 import com.example.koun.domain.Item;
-import com.example.koun.domain.Section;
 import com.example.koun.dto.SectionFindResponseDto;
 import com.example.koun.dto.SectionSaveRequestDto;
 

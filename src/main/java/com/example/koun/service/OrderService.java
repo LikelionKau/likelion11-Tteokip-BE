@@ -1,4 +1,4 @@
-package com.example.koun.Service;
+package com.example.koun.service;
 
 public interface OrderService {
 

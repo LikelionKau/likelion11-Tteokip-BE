@@ -1,16 +1,13 @@
-package com.example.koun.Service;
+package com.example.koun.service;
 
-import com.example.koun.Repository.ItemRepository;
-import com.example.koun.Repository.SectionRepository;
+import com.example.koun.repository.ItemRepository;
+import com.example.koun.repository.SectionRepository;
 import com.example.koun.domain.Item;
 import com.example.koun.domain.Section;
 import com.example.koun.dto.SectionFindResponseDto;
 import com.example.koun.dto.SectionSaveRequestDto;
-import com.example.koun.dto.SectionFindResponseDto;
-import com.example.koun.dto.SectionSaveRequestDto;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
