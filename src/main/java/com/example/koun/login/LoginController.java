@@ -1,13 +1,11 @@
 package com.example.koun.login;
 
 
-
 import com.example.koun.dto.UserSaveRequestDto;
 import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.login.auth.OAuthToken;
 import com.example.koun.login.auth.kakao.KakaoProfile;
 import com.example.koun.login.jwt.JwUtil;
-import com.example.koun.login.session.SessionManager;
 import com.example.koun.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -20,28 +18,21 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-@Controller
+@RestController
 public class LoginController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private SessionManager sessionManager;
-
 
 
 
     @RequestMapping(value = "/loginRedirect", method = RequestMethod.GET)
     public ResponseEntity<String> kakaoLogin(@RequestParam(value = "code", required = false) String code
             , HttpServletResponse httpResponse) throws Exception {
-        System.out.println("카카오로부터 요청받은 인가코드 : " + code);
+//        System.out.println("카카오로부터 요청받은 인가코드 : " + code);
 
 
         RestTemplate rt = new RestTemplate();
@@ -65,7 +56,7 @@ public class LoginController {
                 String.class // 요청 시 반환되는 데이터 타입
         );
 
-        System.out.println(" 카카오 토큰 요청 완료: 토큰 요청에 대한 응답 :" + response);
+//        System.out.println(" 카카오 토큰 요청 완료: 토큰 요청에 대한 응답 :" + response);
 
         ObjectMapper objectMapper = new ObjectMapper();
         OAuthToken oauthToken = null;
@@ -78,7 +69,7 @@ public class LoginController {
             e.printStackTrace();
         }
 
-        System.out.println("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
+//        System.out.println("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
 
         RestTemplate rt2 = new RestTemplate();
 
@@ -98,7 +89,7 @@ public class LoginController {
                 String.class // 요청 시 반환되는 데이터 타입
         );
 
-        System.out.println("response2.getBody(): " + response2.getBody());
+//        System.out.println("response2.getBody(): " + response2.getBody());
 
 
         ObjectMapper objectMapper2 = new ObjectMapper();
@@ -114,12 +105,12 @@ public class LoginController {
 
 
         //USER 오브젝트 : userName , password, userEmail
-        System.out.println("카카오 아이디: " + kakaoProfile.getId());
-        System.out.println("카카오 이메일: " + kakaoProfile.getKakao_account().getEmail());
-
-        System.out.println("koun 유저네임: " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId());
-        System.out.println("koun 이메일: " + kakaoProfile.getKakao_account().getEmail());
-        System.out.println("userName : " + kakaoProfile.getKakao_account().getProfile().getNickname());
+//        System.out.println("카카오 아이디: " + kakaoProfile.getId());
+//        System.out.println("카카오 이메일: " + kakaoProfile.getKakao_account().getEmail());
+//
+//        System.out.println("koun 유저네임: " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId());
+//        System.out.println("koun 이메일: " + kakaoProfile.getKakao_account().getEmail());
+//        System.out.println("userName : " + kakaoProfile.getKakao_account().getProfile().getNickname());
 
         //requestDto 생성
         UserSaveRequestDto kakaoUser = UserSaveRequestDto.builder()
@@ -136,14 +127,12 @@ public class LoginController {
             originUser = userService.findUser(kakaoUser.getUserEmail());
         }
 
-        System.out.println(originUser.getUserName() + originUser.getUserEmail());
-        System.out.println("자동 로그인 시작");
+//        System.out.println(originUser.getUserName() + originUser.getUserEmail());
+//        System.out.println("자동 로그인 시작");
 
 
         //jwt 발급
         String token = JwUtil.createToken(originUser);
-
-
 
 
         HttpHeaders headersJwt = new HttpHeaders();
@@ -151,23 +140,7 @@ public class LoginController {
         return new ResponseEntity<>(token, headersJwt, HttpStatus.OK);
 
 
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
