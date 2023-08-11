@@ -1,11 +1,13 @@
 package com.example.koun.login;
 
-import com.example.koun.login.jwt.JwUtil;
-import com.example.koun.dto.UserSaveResponseDto;
+
+
 import com.example.koun.dto.UserSaveRequestDto;
+import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.login.auth.OAuthToken;
 import com.example.koun.login.auth.kakao.KakaoProfile;
-
+import com.example.koun.login.jwt.JwUtil;
+import com.example.koun.login.session.SessionManager;
 import com.example.koun.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -14,16 +16,26 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-@RestController
+@Controller
 public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SessionManager sessionManager;
+
+
 
 
 
@@ -143,11 +155,11 @@ public class LoginController {
             sessionManager.createSession(originUser,httpResponse );
         }
 
-        /**
-         * jwt를 사용한 토큰 생성
-         */
+        System.out.println(originUser.getUserName() + originUser.getUserEmail());
+        System.out.println("자동 로그인 시작");
 
-        // JWT 발급
+
+        //jwt 발급
         String token = JwUtil.createToken(originUser);
 
 
@@ -163,6 +175,20 @@ public class LoginController {
         return "loginRedirect";
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
