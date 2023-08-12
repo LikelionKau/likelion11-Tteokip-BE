@@ -57,4 +57,10 @@ public class Section {
         this.item = item;
         item.getSections().add(this);
     }
+
+
+    public int findSectionTotalCount(){
+        return raffles.size();
+    }
+
 }

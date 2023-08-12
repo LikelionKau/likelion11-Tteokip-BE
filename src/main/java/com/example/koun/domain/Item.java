@@ -79,4 +79,9 @@ public class Item {
 
 
     }
+
+    public int findItemTotalCount(){
+        return raffles.size();
+    }
+
 }
