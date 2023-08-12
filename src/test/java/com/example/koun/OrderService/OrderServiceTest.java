@@ -32,7 +32,7 @@ public class OrderServiceTest {
                 .userName("sangwon")
                 .userEmail("zmdk1205@naver.com")
                 .gender('M')
-                .roleType(RoleType.USER)
+
                 .build();
         userRepository.save(user1);
 

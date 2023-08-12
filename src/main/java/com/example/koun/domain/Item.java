@@ -26,8 +26,13 @@ public class Item {
     @Column(name = "item_id")
     private Long id;
 
+
+
+
     @Column(name = "raffle_quantity")
     private int raffleQuantity;
+
+
 
     private String artist;
 
@@ -40,7 +45,8 @@ public class Item {
     @Column(name = "like_num")
     private int likeNum;
 
-    @Column(name = "item_Name")
+    @Column(name = "item_num")
+
     private String itemName;
 
     private String post;
@@ -67,6 +73,8 @@ public class Item {
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
             , int likeNum, String itemName, String post
             , int ageRequirement, String description) {
+
+
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;

@@ -29,8 +29,7 @@ public class SectionService {
     public Long joinSection(SectionSaveRequestDto requestDto) {
         Item item = itemRepository.findByItemName(requestDto.getItemName())
             .orElseThrow(
-                () -> new IllegalArgumentException("해당 콘서트가 없습니다.")
-            );
+                () -> new IllegalArgumentException("해당 상품이 없습니다. id=" + requestDto.getItemName()));
         Section section = requestDto.toEntity(item);
 
         return sectionRepository.save(section).getId();

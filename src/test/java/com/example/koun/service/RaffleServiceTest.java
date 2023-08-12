@@ -59,7 +59,6 @@ class RaffleServiceTest {
                     .userEmail(userEmail)
                     .userName("상원")
                     .gender('M')
-                    .roleType(RoleType.USER)
                     .build();
             userRepository.save(user);
 
@@ -79,7 +78,6 @@ class RaffleServiceTest {
                     .userEmail(userEmail)
                     .userName("홍길동")
                     .gender('M')
-                    .roleType(RoleType.USER)
                     .build();
             userRepository.save(user);
 
