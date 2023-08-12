@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @RequiredArgsConstructor
 public class SectionService {
@@ -26,7 +27,7 @@ public class SectionService {
     //생성
     @Transactional
     public Long joinSection(SectionSaveRequestDto requestDto) {
-        Item item = itemRepository.findById(requestDto.getItemId())
+        Item item = itemRepository.findByItemName(requestDto.getItemName())
             .orElseThrow(
                 () -> new IllegalArgumentException("해당 콘서트가 없습니다.")
             );

@@ -15,15 +15,15 @@ public class SectionSaveRequestDto {
 
     private int seatQuantity;
 
-    private Long itemId;
+    private String itemName;
 
     private String sectionName;
 
     @Builder
-    public SectionSaveRequestDto(int price, int seatQuantity, Long itemId, String sectionName) {
+    public SectionSaveRequestDto(int price, int seatQuantity, String itemName, String sectionName) {
         this.price = price;
         this.seatQuantity = seatQuantity;
-        this.itemId = itemId;
+        this.itemName = itemName;
         this.sectionName = sectionName;
     }
 

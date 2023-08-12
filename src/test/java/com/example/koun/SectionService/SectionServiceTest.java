@@ -22,8 +22,8 @@ public class SectionServiceTest {
     public void joinSectionAndFind() {
 
         Item item = Item.builder()
-            .itemName("Lauv Concert")
-            .artist("Lauv")
+            .itemName("임영웅의 영웅티비")
+            .artist("임영웅")
             .build();
 
         itemRepository.save(item);
@@ -32,14 +32,14 @@ public class SectionServiceTest {
         SectionSaveRequestDto sectionRequestDto = SectionSaveRequestDto.builder()
             .price(15000)
             .seatQuantity(20)
-            .itemId(item.getId())
+            .itemName(item.getItemName())
             .sectionName("L")
             .build();
 
         SectionSaveRequestDto sectionRequestDto2 = SectionSaveRequestDto.builder()
             .price(20000)
             .seatQuantity(30)
-            .itemId(item.getId())
+            .itemName(item.getItemName())
             .sectionName("A")
             .build();
 
