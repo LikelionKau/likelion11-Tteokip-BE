@@ -1,6 +1,8 @@
 package com.example.koun.domain;
 
 
+import com.example.koun.dto.ItemRequestDto;
+import com.example.koun.dto.ItemUpdateDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,16 +35,11 @@ public class Item {
 
     private String venue;
 
-
-    @Column(name="ticket_price")
-    private int ticketPrice;
-
-
-
     @Column(name="like_num")
     private int likeNum;
 
     @Column(name="item_num")
+
     private String itemName;
 
     private String post;
@@ -65,25 +62,35 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<Like> likes = new ArrayList<>();
 
-
-
     @Builder
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
-                , int ticketPrice, int likeNum, String itemName, String post
-                , int ageRequirement, String description, List<Raffle> raffles
-                , List<Section> sections, List<Like> likes) {
+                , int likeNum, String itemName, String post
+                , int ageRequirement, String description) {
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;
         this.venue = venue;
-        this.ticketPrice = ticketPrice;
         this.likeNum = likeNum;
         this.itemName = itemName;
         this.post = post;
         this.ageRequirement = ageRequirement;
         this.description = description;
-        this.raffles = raffles;
-        this.sections = sections;
-        this.likes = likes;
+
     }
+
+    public void updateItem(ItemUpdateDto itemUpdateDto){
+        this.raffleQuantity = itemUpdateDto.getRaffleQuantity();
+        this.artist = itemUpdateDto.getArtist();
+        this.dateTime = itemUpdateDto.getDateTime();
+        this.venue = itemUpdateDto.getVenue();
+        this.likeNum = itemUpdateDto.getLikeNum();
+        this.itemName = itemUpdateDto.getItemName();
+        this.post = itemUpdateDto.getPost();
+        this.ageRequirement = itemUpdateDto.getAgeRequirement();
+        this.description = itemUpdateDto.getDescription();
+
+    }
+
+
+
 }

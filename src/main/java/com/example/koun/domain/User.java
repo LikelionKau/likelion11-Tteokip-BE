@@ -29,7 +29,6 @@ public class User {
     @Column(name="user_name",nullable=false)
     private String userName;
 
-    @Column(nullable=false)
     private String password;
 
     @Column(name="user_email",nullable=false)
@@ -58,7 +57,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     @ColumnDefault("USER")
     private RoleType roleType=RoleType.USER;
-
 
     @OneToMany(mappedBy = "user")
     private List<Raffle> raffles = new ArrayList<>();
