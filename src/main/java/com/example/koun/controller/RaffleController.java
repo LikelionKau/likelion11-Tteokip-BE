@@ -47,5 +47,15 @@ public class RaffleController {
         return new ResponseEntity<>(raffle, HttpStatus.OK);
     }
 
+    //래플 삭제
+    @DeleteMapping("/{raffleId}")
+    public ResponseEntity<Void> deleteRaffle(@PathVariable Long raffleId) {
+        raffleService.deleteRaffle(raffleId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+
+
 
 }
