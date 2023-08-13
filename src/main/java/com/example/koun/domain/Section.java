@@ -66,4 +66,8 @@ public class Section {
     public void newSectionSeatQuantity(int newSeatQuantity) {
         this.seatQuantity = newSeatQuantity;
     }
+
+    public int findSectionTotalCount() {
+        return getRaffles().size();
+    }
 }
