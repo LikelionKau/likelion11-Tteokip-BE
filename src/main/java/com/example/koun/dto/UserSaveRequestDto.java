@@ -3,7 +3,9 @@ package com.example.koun.dto;
 import com.example.koun.domain.RoleType;
 import com.example.koun.domain.User;
 
+
 import javax.management.relation.Role;
+
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,6 +19,7 @@ public class UserSaveRequestDto {
 
     private String userName;
     private String userEmail;
+
     private String password;
 
     @Builder
@@ -24,8 +27,10 @@ public class UserSaveRequestDto {
                               String password) {
         this.userName = userName;
         this.userEmail = userEmail;
+
         this.password = password;
     }
+
 
 
     public User toEntity() {
@@ -34,6 +39,7 @@ public class UserSaveRequestDto {
                 .userEmail(userEmail)
                 .password(password)
                 .build();
+
     }
 
 }

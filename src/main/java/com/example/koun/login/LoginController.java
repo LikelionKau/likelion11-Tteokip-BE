@@ -1,11 +1,13 @@
 package com.example.koun.login;
 
 
+
 import com.example.koun.dto.UserSaveRequestDto;
 import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.login.auth.OAuthToken;
 import com.example.koun.login.auth.kakao.KakaoProfile;
 import com.example.koun.login.jwt.JwUtil;
+
 import com.example.koun.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -13,15 +15,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.*;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+
 public class LoginController {
 
     @Autowired
@@ -29,10 +35,12 @@ public class LoginController {
 
 
 
+
     @RequestMapping(value = "/loginRedirect", method = RequestMethod.GET)
     public ResponseEntity<String> kakaoLogin(@RequestParam(value = "code", required = false) String code
             , HttpServletResponse httpResponse) throws Exception {
 //        System.out.println("카카오로부터 요청받은 인가코드 : " + code);
+
 
 
         RestTemplate rt = new RestTemplate();
@@ -47,6 +55,7 @@ public class LoginController {
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params,
+
                 headers);
 
         ResponseEntity<String> response = rt.exchange(
@@ -58,8 +67,10 @@ public class LoginController {
 
 //        System.out.println(" 카카오 토큰 요청 완료: 토큰 요청에 대한 응답 :" + response);
 
+
         ObjectMapper objectMapper = new ObjectMapper();
         OAuthToken oauthToken = null;
+
 
         try {
             oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
@@ -71,11 +82,13 @@ public class LoginController {
 
 //        System.out.println("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
 
+
         RestTemplate rt2 = new RestTemplate();
 
         HttpHeaders headers2 = new org.springframework.http.HttpHeaders();
         headers2.add("Authorization", "Bearer " + oauthToken.getAccess_token());
         headers2.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+
 
 
         HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest2 = new HttpEntity<>(params,
@@ -100,11 +113,13 @@ public class LoginController {
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
+
             e.printStackTrace();
         }
 
 
         //USER 오브젝트 : userName , password, userEmail
+
 //        System.out.println("카카오 아이디: " + kakaoProfile.getId());
 //        System.out.println("카카오 이메일: " + kakaoProfile.getKakao_account().getEmail());
 //
@@ -142,6 +157,7 @@ public class LoginController {
 
 
     }
+
 
 
 }
