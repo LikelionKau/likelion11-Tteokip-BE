@@ -61,6 +61,9 @@ public class SectionServiceTest {
         //좌석수 업데이트
         sectionService.updateSectionSeatQuantity(sectionId2,40);
 
+        //좌석 삭제
+        sectionService.deleteSection(sectionId1);
+
 
     }
 
