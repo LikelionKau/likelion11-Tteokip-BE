@@ -37,12 +37,12 @@ public class SectionService {
     }
 
     //조회
-//    @Transactional
-////    public SectionResponseDto findSection(Long id) {
-////        Section entity = sectionRepository.findById(id)
-////            .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + id));
-////        return new SectionResponseDto(entity);
-////    }
+    @Transactional
+    public SectionFindResponseDto findSection(Long id) {
+        Section entity = sectionRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + id));
+        return new SectionFindResponseDto(entity);
+    }
 
     //콘서트에 해당하는 구역 리스트 조회
     @Transactional
@@ -78,10 +78,12 @@ public class SectionService {
 
     //구역 삭제
     @Transactional
-    public void deleteRaffle(Long sectionId) {
+    public void deleteSection(Long sectionId) {
 
         Section section = sectionRepository.findById(sectionId)
             .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + sectionId));
+
+        section.getItem().getSections().remove(section);
 
 
         sectionRepository.delete(section);

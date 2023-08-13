@@ -6,8 +6,10 @@ import com.example.koun.domain.Section;
 import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class SectionSaveRequestDto {
 
     private int price;
