@@ -3,9 +3,11 @@ package com.example.koun.RaffleService;
 import com.example.koun.domain.*;
 import com.example.koun.dto.RaffleSaveRequestDto;
 import com.example.koun.dto.RaffleFindResponseDto;
+
 import com.example.koun.repository.ItemRepository;
 import com.example.koun.repository.SectionRepository;
 import com.example.koun.repository.UserRepository;
+
 import com.example.koun.service.RaffleService;
 
 import java.time.LocalDateTime;
@@ -39,7 +41,6 @@ public class RaffleServiceTest {
                 .userName("sangwon")
                 .userEmail("zmdk12055@naver.com")
                 .gender('M')
-                .roleType(RoleType.USER)
                 .build();
         // user 필드 설정
         userRepository.save(user);
@@ -48,14 +49,14 @@ public class RaffleServiceTest {
                 .userName("miyeon")
                 .userEmail("aldus0123@naver.com")
                 .gender('M')
-                .roleType(RoleType.USER)
+
                 .build();
         userRepository.save(user1);
         User user2 = User.builder()
                 .userName("jiyoen")
                 .userEmail("al1231233@naver.com")
                 .gender('M')
-                .roleType(RoleType.USER)
+
                 .build();
         userRepository.save(user2);
 

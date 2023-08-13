@@ -79,7 +79,10 @@ public class User {
     @Builder
     public User(String userName, String password, String userEmail, String phoneNum
                 , LocalDateTime userBirth, String account, char gender, String userAddress
+
                 , String oauth) {
+
+
 
         this.userName = userName;
         this.password = password;
@@ -89,9 +92,11 @@ public class User {
         this.account = account;
         this.gender = gender;
         this.userAddress = userAddress;
+
         this.isDeleted = false;
         this.roleType = RoleType.USER;
         this.oauth = oauth;
     }
 
 }
+

@@ -38,7 +38,9 @@ public class Order {
 
     @Builder
     public Order(LocalDateTime orderDate, DeliveryStatus deliveryStatus, String address, User user,Raffle raffle
-        ) {
+
+    ) {
+
         this.orderDate = orderDate;
         this.deliveryStatus = deliveryStatus;
         this.address = address;
@@ -64,4 +66,6 @@ public class Order {
 
 
 
+
 }
+

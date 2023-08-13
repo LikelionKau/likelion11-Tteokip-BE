@@ -23,26 +23,27 @@ public class Section {
 
     @Id
     @GeneratedValue
-    @Column(name="section_id")
+    @Column(name = "section_id")
     private Long id;
 
     private int price;
 
-    @Column(name="section_name")
+    @Column(name = "section_name")
     private String sectionName;
 
-    @Column(name="seat_quantity")
+    @Column(name = "seat_quantity")
     private int seatQuantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="item_id")
+    @JoinColumn(name = "item_id")
     private Item item;
-    
+
     @OneToMany(mappedBy = "section")
     private List<Raffle> raffles = new ArrayList<>();
 
 
     @Builder
+
     public Section(int price, int seatQuantity, String sectionName ,Item item) {
         this.price = price;
         this.seatQuantity = seatQuantity;
@@ -56,5 +57,13 @@ public class Section {
         }
         this.item = item;
         item.getSections().add(this);
+    }
+
+    //비즈니스로직
+    public void newSectionPrice(int newPrice) {
+        this.price = newPrice;
+    }
+    public void newSectionSeatQuantity(int newSeatQuantity) {
+        this.seatQuantity = newSeatQuantity;
     }
 }
