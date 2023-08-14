@@ -5,6 +5,7 @@ public class UpdatePriceDto {
     private int newPrice;
 
     private UpdatePriceDto() {
+
     }
 
     public int getNewPrice() {
