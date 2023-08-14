@@ -16,7 +16,7 @@ public class ItemResponseDto {
     private String itemName;
     private String description;
 
-    //파라미터로 Entity를 받으면 Dto로 변환
+    //파라미터로 Entity를 받으면 Dto로
     public ItemResponseDto(Item item){
             this.raffleQuantity = item.getRaffleQuantity();
             this.artist = item.getArtist();

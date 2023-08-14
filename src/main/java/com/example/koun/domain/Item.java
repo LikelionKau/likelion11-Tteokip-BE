@@ -1,7 +1,5 @@
 package com.example.koun.domain;
 
-
-import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemUpdateDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

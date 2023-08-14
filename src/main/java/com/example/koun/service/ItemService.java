@@ -1,12 +1,10 @@
 package com.example.koun.service;
 
 import com.example.koun.domain.Item;
-import com.example.koun.domain.User;
 import com.example.koun.dto.ItemRequestDto;
 import com.example.koun.dto.ItemResponseDto;
 import com.example.koun.dto.ItemUpdateDto;
 import com.example.koun.repository.ItemRepository;
-import com.example.koun.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
