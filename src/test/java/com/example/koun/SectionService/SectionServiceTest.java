@@ -1,7 +1,6 @@
 package com.example.koun.SectionService;
 
 
-import com.example.koun.domain.Section;
 import com.example.koun.repository.ItemRepository;
 import com.example.koun.service.SectionService;
 import com.example.koun.domain.Item;
@@ -52,8 +51,6 @@ public class SectionServiceTest {
 
 
 
-
-
         //콘서트 아이디에 해당하는 구역 조회
         List<SectionFindResponseDto> itemSections = sectionService.findSectionsByItemId(item.getId());
         System.out.println("콘서트 구역 테스트" + itemSections);
@@ -66,6 +63,9 @@ public class SectionServiceTest {
 
         //구역 삭제
         sectionService.deleteSection(sectionId2);
+
+        //좌석 삭제
+        sectionService.deleteSection(sectionId1);
 
 
     }
