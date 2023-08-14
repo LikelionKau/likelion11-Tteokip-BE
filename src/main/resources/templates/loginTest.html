@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+</head>
+<body>
+<a class="p-2" th:href="@{'https://kauth.kakao.com/oauth/authorize?client_id=' + '2cf364356a3329e6b0fca033d6447fbd' + '&redirect_uri=' + 'http://localhost:8080/loginRedirect' + '&response_type=code'}">
+  <button type="button">카카오계정 로그인</button>
+</a>
+</body>
+</html>

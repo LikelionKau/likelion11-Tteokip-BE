@@ -19,8 +19,9 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Item {
 
-    @Id @GeneratedValue
-    @Column(name="item_id")
+    @Id
+    @GeneratedValue
+    @Column(name = "item_id")
     private Long id;
 
     @Column(name="raffle_quantity")
@@ -28,23 +29,23 @@ public class Item {
 
     private String artist;
 
-    @Column(name="date_time")
+    @Column(name = "date_time")
     private LocalDateTime dateTime;
 
     private String venue;
 
-    @Column(name="like_num")
+
+    @Column(name = "like_num")
     private int likeNum;
 
-    @Column(name="item_num")
+    @Column(name = "item_num")
 
     private String itemName;
 
     private String post;
 
 
-
-    @Column(name="age_requirement")
+    @Column(name = "age_requirement")
     private int ageRequirement;
 
 
@@ -60,10 +61,13 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<Like> likes = new ArrayList<>();
 
+
     @Builder
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
-                , int likeNum, String itemName, String post
-                , int ageRequirement, String description) {
+            , int likeNum, String itemName, String post
+            , int ageRequirement, String description) {
+
+
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;

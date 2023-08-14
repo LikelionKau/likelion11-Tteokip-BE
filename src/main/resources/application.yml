@@ -12,7 +12,32 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          kakao:
+#            client-id: 2cf364356a3329e6b0fca033d6447fbd
+#            authorization-grant-type: authorization_code
+#            redirect-uri: http://localhost:8080/loginRedirect
+#            client-authentication-method: post
+#            scope:
+#              - profile_nickname
+#              - account_email
+#        provider:
+#          kakao:
+#            authorization_uri: https://kauth.kakao.com/oauth/authorize
+#            token_uri: https://kauth.kakao.com/oauth/token
+#            user-info-uri: https://kapi.kakao.com/v2/user/me
+#            user_name_attribute: id
+
+
+
 logging:
   level:
     org.hibernate.SQL: debug
+
+
+
 
