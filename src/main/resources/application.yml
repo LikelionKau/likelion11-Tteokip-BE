@@ -1,15 +1,16 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/koun
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://koundb.cseedxgtmzcd.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: koun1234
 
 
   jpa:
     hibernate:
       ddl-auto: create
     properties:
+      dialect: org.hibernate.dialect.MySQL5Dialect
       hibernate:
         format_sql: true
 
