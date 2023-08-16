@@ -1,37 +1,50 @@
-package com.example.koun.dto;
-
-import java.time.LocalDateTime;
-import lombok.Builder;
-import lombok.Data;
-
-@Data
-public class ItemUpdateDto {
-    private int raffleQuantity;
-    private String artist;
-    private LocalDateTime dateTime;
-    private String venue;
-    private int ticketPrice;
-    private int likeNum;
-    private int itemNum;
-    private String itemName;
-    private String post;
-    private String ageRequirement;
-    private String description;
-    private int viewingTime;
-
-
-    @Builder
-    public ItemUpdateDto(int raffleQuantity, String artist, LocalDateTime dateTime, String venue, int ticketPrice, int likeNum, String itemName,int itemNum, String ageRequirement , String description, int viewingTime) {
-        this.raffleQuantity = raffleQuantity;
-        this.artist = artist;
-        this.dateTime = dateTime;
-        this.venue = venue;
-        this.ticketPrice = ticketPrice;
-        this.likeNum = likeNum;
-        this.itemName = itemName;
-        this.itemNum = itemNum;
-        this.ageRequirement= ageRequirement;
-        this.description = description;
-        this.viewingTime = viewingTime;
-    }
-}
+//package com.example.koun.dto;
+//
+//import com.example.koun.domain.Item;
+//import java.time.LocalDateTime;
+//import java.time.format.DateTimeFormatter;
+//import lombok.Builder;
+//import lombok.Data;
+//
+//@Data
+//public class ItemUpdateRequestDto {
+//    private String itemName;
+//    private String artist;
+//    private String venue;
+//    private String dateTime;
+//    private String ageRequirement;
+//    private int runningTime;
+//    private String post;
+//
+//
+//
+//    @Builder
+//    public ItemUpdateRequestDto(String itemName, String artist, String venue, String dateTime, String ageRequirement, int runningTime, String post) {
+//        this.itemName = itemName;
+//        this.artist = artist;
+//        this.venue = venue;
+//        this.dateTime = dateTime;
+//        this.ageRequirement = ageRequirement;
+//        this.runningTime = runningTime;
+//        this.post = post;
+//    }
+//
+//    public Item toEntitiy(){
+//        return Item.builder()
+//            .itemName(itemName)
+//            .artist(artist)
+//            .venue(venue)
+//            .dateTime(convertToDateTime(dateTime))
+//            .ageRequirement(ageRequirement)
+//            .runningTime(runningTime)
+//            .post(post)
+//            .build();
+//
+//
+//    }
+//    // 문자열을 LocalDateTime으로 변환하는 메서드
+//    public static LocalDateTime convertToDateTime(String dateString) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//        return LocalDateTime.parse(dateString, formatter);
+//    }
+//}
