@@ -19,6 +19,8 @@ public class RaffleFindResponseDto {
     private String sectionName;
     private String dateTime;
     private int price;
+    private String uploadTime;
+    private String post;
 
 
 
@@ -33,6 +35,8 @@ public class RaffleFindResponseDto {
         this.applicationDate = entity.getApplicationDate().format(formatter);
         this.raffleDrawDate = entity.getRaffleDrawDate().format(formatter);
         this.dateTime = entity.getItem().getDateTime().format(formatter);
+        this.uploadTime=entity.getItem().getUploadTime().format(formatter);
+        this.post=entity.getItem().getPost();
 
 
     }
