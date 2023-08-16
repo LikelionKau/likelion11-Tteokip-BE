@@ -47,26 +47,29 @@ public class InitDB {
 
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+
             LocalDateTime dateTime = LocalDateTime.parse("2023-10-17 18:00", formatter);
-            LocalDate uploadTime = LocalDate.parse("2023-08-15", formatter);
+            LocalDate uploadTime = LocalDate.parse("2023-08-15", dateFormatter);
             LocalDateTime dateTime1 = LocalDateTime.parse("2023-08-26 18:00", formatter);
-            LocalDate uploadTime1 = LocalDate.parse("2023-08-17", formatter);
+            LocalDate uploadTime1 = LocalDate.parse("2023-08-17", dateFormatter);
             LocalDateTime dateTime2 = LocalDateTime.parse("2023-10-17 18:00", formatter);
-            LocalDate uploadTime2 = LocalDate.parse("2023-08-16", formatter);
+            LocalDate uploadTime2 = LocalDate.parse("2023-08-16", dateFormatter);
             LocalDateTime dateTime3 = LocalDateTime.parse("2023-08-25 18:00", formatter);
-            LocalDate uploadTime3 = LocalDate.parse("2023-08-18", formatter);
+            LocalDate uploadTime3 = LocalDate.parse("2023-08-18", dateFormatter);
             LocalDateTime dateTime4 = LocalDateTime.parse("2023-09-09 18:00", formatter);
-            LocalDate uploadTime4 = LocalDate.parse("2023-08-15", formatter);
+            LocalDate uploadTime4 = LocalDate.parse("2023-08-15", dateFormatter);
             LocalDateTime dateTime5 = LocalDateTime.parse("2023-09-02 18:00", formatter);
-            LocalDate uploadTime5 = LocalDate.parse("2023-08-19", formatter);
+            LocalDate uploadTime5 = LocalDate.parse("2023-08-19", dateFormatter);
             LocalDateTime dateTime6 = LocalDateTime.parse("2023-10-03 18:00", formatter);
-            LocalDate uploadTime6 = LocalDate.parse("2023-08-15", formatter);
+            LocalDate uploadTime6 = LocalDate.parse("2023-08-15", dateFormatter);
             LocalDateTime dateTime7 = LocalDateTime.parse("2023-09-12 18:00", formatter);
-            LocalDate uploadTime7 = LocalDate.parse("2023-08-18", formatter);
+            LocalDate uploadTime7 = LocalDate.parse("2023-08-18", dateFormatter);
             LocalDateTime dateTime8 = LocalDateTime.parse("2023-09-09 18:00", formatter);
-            LocalDate uploadTime8 = LocalDate.parse("2023-08-17", formatter);
+            LocalDate uploadTime8 = LocalDate.parse("2023-08-17", dateFormatter);
             LocalDateTime dateTime9 = LocalDateTime.parse("2023-08-25 18:00", formatter);
-            LocalDate uploadTime9 = LocalDate.parse("2023-08-19", formatter);
+            LocalDate uploadTime9 = LocalDate.parse("2023-08-19", dateFormatter);
 
 
 

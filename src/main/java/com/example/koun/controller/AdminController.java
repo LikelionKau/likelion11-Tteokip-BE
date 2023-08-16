@@ -18,6 +18,7 @@ public class AdminController {
     private final ItemRepository itemRepository;
 
 
+
     @PostMapping("/raffle/draw/item/{itemName}")
     public ResponseEntity<Void> drawRaffleForItem(@PathVariable String itemName) {
         // TODO: JWT 토큰 검증 및 관리자 권한 확인 로직
@@ -29,6 +30,8 @@ public class AdminController {
         raffleService.drawRaffleForItem(item.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 
 
 }
