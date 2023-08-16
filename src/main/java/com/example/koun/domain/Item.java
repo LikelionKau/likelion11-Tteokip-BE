@@ -1,6 +1,6 @@
 package com.example.koun.domain;
 
-
+import com.example.koun.dto.ItemUpdateDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,12 +51,14 @@ public class Item {
 
     private String post;
 
-
     @Column(name = "age_requirement")
     private int ageRequirement;
 
 
     private String description;
+
+    @Column(name ="viewing_time")
+    private int viewingTime;
 
 
     @OneToMany(mappedBy = "item")
@@ -72,7 +74,7 @@ public class Item {
     @Builder
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
             , int likeNum, String itemName, String post
-            , int ageRequirement, String description) {
+            , int ageRequirement, String description, int viewingTime) {
 
 
         this.raffleQuantity = raffleQuantity;
@@ -84,7 +86,21 @@ public class Item {
         this.post = post;
         this.ageRequirement = ageRequirement;
         this.description = description;
+        this.viewingTime = viewingTime;
 
+    }
+
+    public void updateItem(ItemUpdateDto itemUpdateDto){
+        this.raffleQuantity = itemUpdateDto.getRaffleQuantity();
+        this.artist = itemUpdateDto.getArtist();
+        this.dateTime = itemUpdateDto.getDateTime();
+        this.venue = itemUpdateDto.getVenue();
+        this.likeNum = itemUpdateDto.getLikeNum();
+        this.itemName = itemUpdateDto.getItemName();
+        this.post = itemUpdateDto.getPost();
+        this.ageRequirement = itemUpdateDto.getAgeRequirement();
+        this.description = itemUpdateDto.getDescription();
+        this.viewingTime = itemUpdateDto.getViewingTime();
 
     }
 }
