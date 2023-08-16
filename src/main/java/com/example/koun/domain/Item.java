@@ -74,7 +74,6 @@ public class Item {
             ,int likeNum, int itemNum, String itemName, String post
             , String ageRequirement, String description, int runningTime, LocalDateTime uploadTime) {
 
-
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;
