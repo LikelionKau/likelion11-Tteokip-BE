@@ -35,7 +35,7 @@ public class RaffleFindResponseDto {
         this.applicationDate = entity.getApplicationDate().format(formatter);
         this.raffleDrawDate = entity.getRaffleDrawDate().format(formatter);
         this.dateTime = entity.getItem().getDateTime().format(formatter);
-        this.uploadTime=entity.getItem().getUploadTime().format(formatter);
+        this.uploadTime=entity.getItem().getUploadTime().format(formatter2);
         this.post=entity.getItem().getPost();
 
 
@@ -43,6 +43,7 @@ public class RaffleFindResponseDto {
 
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
 }
