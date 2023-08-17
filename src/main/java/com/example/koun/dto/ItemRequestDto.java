@@ -5,6 +5,7 @@ import com.example.koun.domain.Item;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class ItemRequestDto {
     private String runningTime;
     private String post;
     private String uploadTime;
+    private String ageRequirement;
 
     // 1. 프론트에서 itemRequestDto에 대한 파라미터 정보를 받는다.
     // 2. 빌더 패턴으로 requestDto 생성
@@ -41,21 +43,21 @@ public class ItemRequestDto {
     }
 
 
-
     // DB에 저장될 때는 toEntity 함수를 사용해서 저장 , 반환할 때는 id 번호 줌
     public Item toEntity() {
         return Item.builder()
-            .raffleQuantity(raffleQuantity)
-            .artist(artist)
-            .dateTime(convertToDateTime(dateTime))
-            .venue(venue)
-            .likeNum(likeNum)
-            .itemName(itemName)
-            .description(description)
-            .runningTime(runningTime)
-            .post(post)
-            .uploadTime(convertToDate(uploadTime))
-            .build();
+                .raffleQuantity(raffleQuantity)
+                .artist(artist)
+                .dateTime(convertToDateTime(dateTime))
+                .venue(venue)
+                .likeNum(likeNum)
+                .itemName(itemName)
+                .description(description)
+                .runningTime(runningTime)
+                .post(post)
+                .uploadTime(convertToDate(uploadTime))
+                .ageRequirement(ageRequirement)
+                .build();
     }
 
     // 문자열을 LocalDateTime으로 변환하는 메서드
@@ -69,7 +71,7 @@ public class ItemRequestDto {
         return LocalDateTime.parse(dateString, formatter);
     }
 
-    public static LocalDate convertToDate(String dateTime){
+    public static LocalDate convertToDate(String dateTime) {
 
         if (dateTime == null) {
             // 혹시 널 값을 가지면 기본값이나 예외 처리를 해줄 수 있습니다.
