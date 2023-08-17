@@ -158,6 +158,8 @@ public class RaffleService {
                 .sectionTotalCount(sectionTotalCount)
                 .sectionRate(sectionRate)
                 .price(section.getPrice())
+                .raffleCount(entity.getRaffleCount())
+                .dateTime(item.getDateTime())
                 .build();
 
         return responseDto;
