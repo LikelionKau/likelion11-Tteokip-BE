@@ -67,7 +67,7 @@ public class InitDB {
             LocalDateTime dateTime8 = LocalDateTime.parse("2023-09-09 18:00", formatter);
             LocalDate uploadTime8 = LocalDate.parse("2023-08-17", dateFormatter);
             LocalDateTime dateTime9 = LocalDateTime.parse("2023-08-25 18:00", formatter);
-            LocalDate uploadTime9 = LocalDate.parse("2023-08-19", dateFormatter);
+            LocalDate uploadTime9 = LocalDate.parse("2023-08-09", dateFormatter);
 
 
 

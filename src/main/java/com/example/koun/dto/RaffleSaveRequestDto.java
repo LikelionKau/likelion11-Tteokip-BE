@@ -18,15 +18,7 @@ public class RaffleSaveRequestDto {
     private Long itemId;
     private Long sectionId;
 
-    @Builder
-    public RaffleSaveRequestDto( int raffleCount, String raffleDrawDate,
-                                Long userId, Long itemId, Long sectionId) {
-        this.raffleCount = raffleCount;
-        this.raffleDrawDate = raffleDrawDate;
-        this.userId = userId;
-        this.itemId = itemId;
-        this.sectionId = sectionId;
-    }
+
 
 
     public Raffle toEntity(User user, Item item, Section section) {
