@@ -15,7 +15,7 @@ public class RaffleSaveRequestDto {
     private int raffleCount;
     private String raffleDrawDate;
     private Long userId;
-    private Long itemId;
+    private String itemName;
     private Long sectionId;
 
 

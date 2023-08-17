@@ -47,7 +47,7 @@ public class ItemAPIController {
         ItemResponseDto item = itemService.findItemsByName(itemName);
 //        if (item != null) {
 //            return new ResponseEntity<>(item, HttpStatus.OK);
-//        } else {
+//        } else {정
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
