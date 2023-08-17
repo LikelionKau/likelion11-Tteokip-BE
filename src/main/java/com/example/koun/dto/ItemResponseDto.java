@@ -31,9 +31,10 @@ public class ItemResponseDto {
         this.description = item.getDescription();
         this.runningTime = item.getRunningTime();
         this.post = item.getPost();
-        this.uploadTime = item.getUploadTime().format(formatter);
+        this.uploadTime = item.getUploadTime().format(formatter2);
     }
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
 }
