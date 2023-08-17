@@ -15,7 +15,7 @@ public class ItemResponseDto {
     private int likeNum; // 확장성
     private String itemName;
     private String description; // 확장성
-    private int runningTime;
+    private String runningTime;
     private String post;
     private String uploadTime;
 

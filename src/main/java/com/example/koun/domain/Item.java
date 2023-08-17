@@ -44,8 +44,7 @@ public class Item {
     @Column(name = "like_num")
     private int likeNum;
 
-    @Column(name = "item_num")
-
+    @Column(name = "item_name")
     private String itemName;
 
     private String post;

@@ -2,6 +2,7 @@ package com.example.koun.dto;
 
 import com.example.koun.domain.Item;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import lombok.Builder;
@@ -19,14 +20,14 @@ public class ItemRequestDto {
     private int likeNum;
     private String itemName;
     private String description;
-    private int runningTime;
+    private String runningTime;
     private String post;
     private String uploadTime;
 
     // 1. 프론트에서 itemRequestDto에 대한 파라미터 정보를 받는다.
     // 2. 빌더 패턴으로 requestDto 생성
     @Builder
-    public ItemRequestDto(int raffleQuantity, String artist, String dateTime, String venue, int likeNum, String itemName, String description, int runningTime, String post, String uploadTime) {
+    public ItemRequestDto(int raffleQuantity, String artist, String dateTime, String venue, int likeNum, String itemName, String description, String runningTime, String post, String uploadTime) {
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;
@@ -53,7 +54,7 @@ public class ItemRequestDto {
             .description(description)
             .runningTime(runningTime)
             .post(post)
-            .uploadTime(convertToDateTime(uploadTime))
+            .uploadTime(convertToDate(uploadTime))
             .build();
     }
 
@@ -66,5 +67,12 @@ public class ItemRequestDto {
         }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return LocalDateTime.parse(dateString, formatter);
+    }
+
+    public static LocalDate convertToDate(String dateTime){
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(dateTime, formatter);
     }
 }
