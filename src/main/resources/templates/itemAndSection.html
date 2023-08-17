@@ -1,0 +1,196 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>콘서트 등록</title>-->
+<!--  <style>-->
+<!--    body {-->
+<!--      font-family: Arial, sans-serif;-->
+<!--      background-color: #f2f2f2;-->
+<!--      /*margin: 20px;*/-->
+<!--    }-->
+<!--    h1 {-->
+<!--      text-align: center;-->
+<!--      color: #333;-->
+<!--    }-->
+<!--    form {-->
+<!--      width: 70%;-->
+<!--      background-color: #fff;-->
+<!--      padding: 20px;-->
+<!--      border: 1px solid #ddd;-->
+
+<!--      /*max-width: 600px;*/-->
+<!--      margin: 0 auto;-->
+<!--    }-->
+<!--    form p {-->
+<!--      color: red;-->
+<!--    }-->
+<!--    table {-->
+<!--      width: 100%;-->
+<!--      border-collapse: collapse;-->
+<!--      margin-top: 20px;-->
+<!--    }-->
+<!--    th, td {-->
+<!--      padding: 10px;-->
+<!--      text-align: left;-->
+<!--    }-->
+
+<!--    tr:nth-child() {-->
+<!--      display: flex;-->
+<!--      flex-direction: column;-->
+<!--    }-->
+<!--    textarea {-->
+<!--      width: 100%;-->
+<!--      resize: vertical;-->
+<!--    }-->
+<!--    input[type="submit"] {-->
+<!--      background-color: #26ddb1;-->
+<!--      color: #fff;-->
+<!--      padding: 10px 20px;-->
+<!--      border: none;-->
+<!--      border-radius: 5px;-->
+<!--      cursor: pointer;-->
+<!--      float: right;-->
+<!--      margin-right: 0;-->
+<!--      font-weight: bold;-->
+<!--      font-size: medium;-->
+<!--    }-->
+
+<!--    a {-->
+<!--      display: block;-->
+<!--      text-align: center;-->
+<!--      margin-top: 20px;-->
+<!--      color: #333;-->
+<!--      text-decoration: none;-->
+<!--    }-->
+
+<!--    label{-->
+<!--      font-weight: 800;-->
+<!--      margin-left: 1%;-->
+<!--    }-->
+<!--  </style>-->
+
+
+<!--</head>-->
+<!--<body>-->
+<!--<h1>콘서트 등록</h1>-->
+<!--&lt;!&ndash; item 등록 form&ndash;&gt;-->
+<!--<form action="/item/itemUpdate" method="post" enctype="multipart/form-data">-->
+<!--  <h2>Koun에 등록될 콘서트의 정보를 입력해주세요</h2>-->
+<!--  <P>* 모든 항목은 필수 입력 사항입니다</P>-->
+<!--  <table>-->
+<!--    <tr>-->
+<!--      <th> 콘서트 제목</th>-->
+<!--      <td><input type="text" name="itemName" /></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th> 가수 </th>-->
+<!--      <td><input type="text" name="artist" /></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th> 장소 </th>-->
+<!--      <td><input type="text" name="venue" /></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th> 일시</th>-->
+<!--      <td><input type="text" name="dateTime" /><span>    예시) 2023.08.19(토) 오전6시</span></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th> 제한연령</th>-->
+<!--      <td><input type="text" name="ageRequirement" /></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>상세 내용</th>-->
+<!--      <td><textarea name="description" cols="40" rows="10"></textarea></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>포스터 업로드</th>-->
+<!--      <td><input type="file" name="post"/></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2"><input type="submit" value="등록하기" /></td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</form>-->
+<!--&lt;!&ndash; section 등록 form &ndash;&gt;-->
+<!--<form action="/section/save" method="post">-->
+<!--  <h2>등록하신 콘서트의 구역 정보를 입력해주세요</h2>-->
+<!--  <P>* 정확한 등록을 위해 콘서트 제목을 확인해주세요</P>-->
+<!--&lt;!&ndash;  <label for="">콘서트 제목</label>&ndash;&gt;-->
+<!--&lt;!&ndash;  <input type="text" name="itemName" />&ndash;&gt;-->
+<!--  <label for="itemName">콘서트 이름: </label>&ndash;&gt;-->
+<!--  <input type="text" id="itemName" name="itemName" required>-->
+<!--    <p>예시) 구역명: 스탠딩 가 / 좌석수: 250석 / 가격: 120000 원</p>-->
+<!--    <table>-->
+<!--      &lt;!&ndash; <tr>-->
+<!--        <th> 1 구역명</th>-->
+<!--        <td><input type="text" name="sectionName" /></td>-->
+<!--        <th> 좌석수</th>-->
+<!--        <td><input type="text" name="seatQuantity" /></td>-->
+<!--        <th> 가격</th>-->
+<!--        <td><input type="text" name="price" /></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th> 2 구역명</th>-->
+<!--        <td><input type="text" name="sectionName" /></td>-->
+<!--        <th> 좌석수</th>-->
+<!--        <td><input type="text" name="seatQuantity" /></td>-->
+<!--        <th> 가격</th>-->
+<!--        <td><input type="text" name="price" /></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th> 3 구역명</th>-->
+<!--        <td><input type="text" name="sectionName" /></td>-->
+<!--        <th> 좌석수</th>-->
+<!--        <td><input type="text" name="seatQuantity" /></td>-->
+<!--        <th> 가격</th>-->
+<!--        <td><input type="text" name="price" /></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th> 4 구역명</th>-->
+<!--        <td><input type="text" name="sectionName" /></td>-->
+<!--        <th> 좌석수</th>-->
+<!--        <td><input type="text" name="seatQuantity" /></td>-->
+<!--        <th> 가격</th>-->
+<!--        <td><input type="text" name="price" /></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th> 5 구역명</th>-->
+<!--        <td><input type="text" name="sectionName" /></td>-->
+<!--        <th> 좌석수</th>-->
+<!--        <td><input type="text" name="seatQuantity" /></td>-->
+<!--        <th> 가격</th>-->
+<!--        <td><input type="text" name="price" /></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <th> 6 구역명</th>-->
+<!--        <td><input type="text" name="sectionName" /></td>-->
+<!--        <th> 좌석수</th>-->
+<!--        <td><input type="text" name="seatQuantity" /></td>-->
+<!--        <th> 가격</th>-->
+<!--        <td><input type="text" name="price" /></td>-->
+<!--      </tr> &ndash;&gt;-->
+<!--    <tr>-->
+<!--      &lt;!&ndash; <th> 7 구역명</th>-->
+<!--      <td><input type="text" name="sectionName" /></td>-->
+<!--      <th> 좌석수</th>-->
+<!--      <td><input type="text" name="seatQuantity" /></td>-->
+<!--      <th> 가격</th>-->
+<!--      <td><input type="text" name="price" /></td> &ndash;&gt;-->
+
+<!--      <label for="sectionName"><th>구역명</th></label>-->
+<!--      <td><input type="text" id="sectionName" name="sectionName" required></td>-->
+<!--      <label for="seatQuantity"><th>좌석수</th></label>-->
+<!--      <td><input type="number" id="seatQuantity" name="seatQuantity" required></td>-->
+<!--      <label for="price"><th>가격</th></label>-->
+<!--      <td><input type="number" id="price" name="price" required></td>-->
+
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="7"><input type="submit" value="등록하기" /></td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</form>-->
+<!--&lt;!&ndash; <a href="getBoardList.do">글 목록 가기</a> &ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
