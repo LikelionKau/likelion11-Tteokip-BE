@@ -71,6 +71,11 @@ public class ItemRequestDto {
 
     public static LocalDate convertToDate(String dateTime){
 
+        if (dateTime == null) {
+            // 혹시 널 값을 가지면 기본값이나 예외 처리를 해줄 수 있습니다.
+            // 여기서는 널 값을 가지면 현재 시간을 반환하도록 처리했습니다.
+            return LocalDate.now();
+        }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return LocalDate.parse(dateTime, formatter);

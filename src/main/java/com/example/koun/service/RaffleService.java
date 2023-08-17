@@ -135,7 +135,7 @@ public class RaffleService {
         int seatQuantity = section.getSeatQuantity();
         int sectionTotalCount = section.findSectionTotalCount();
         double sectionRate = (double) seatQuantity / sectionTotalCount;
-        sectionRate = Math.round(sectionRate * 10) / 10.0;
+        sectionRate = Math.round(sectionRate * 10)*10;
         int itemTotalCount = item.findItemTotalCount();
 
         RaffleResultResponseDto responseDto = RaffleResultResponseDto.builder()

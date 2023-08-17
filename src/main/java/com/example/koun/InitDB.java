@@ -197,78 +197,67 @@ public class InitDB {
 
             Section section = Section.builder()
                     .sectionName("스탠딩-가")
-                    .seatQuantity(100)
+                    .seatQuantity(150)
                     .item(item)
                     .price(120000)
                     .build();
             sectionRepository.save(section);
 
             Section section1 = Section.builder()
-                    .sectionName("지정석-나")
-                    .seatQuantity(50)
+                    .sectionName("스탠딩-나")
+                    .seatQuantity(150)
+                    .price(120000)
                     .item(item)
                     .build();
             sectionRepository.save(section1);
 
+            Section section2 = Section.builder()
+                    .sectionName("스탠딩-다")
+                    .seatQuantity(150)
+                    .item(item)
+                    .price(120000)
+                    .build();
+            sectionRepository.save(section2);
+
+            Section section3 = Section.builder()
+                    .sectionName("스탠딩-라")
+                    .seatQuantity(150)
+                    .item(item)
+                    .price(120000)
+                    .build();
+            sectionRepository.save(section3);
+
+            Section section4 = Section.builder()
+                    .sectionName("지정석-가")
+                    .seatQuantity(200)
+                    .item(item)
+                    .price(90000)
+                    .build();
+            sectionRepository.save(section4);
+
+            Section section5 = Section.builder()
+                    .sectionName("지정석-나")
+                    .seatQuantity(200)
+                    .item(item)
+                    .price(90000)
+                    .build();
+            sectionRepository.save(section5);
+
+            Section section6 = Section.builder()
+                    .sectionName("지정석-다")
+                    .seatQuantity(200)
+                    .item(item)
+                    .price(90000)
+                    .build();
+            sectionRepository.save(section6);
 
 
+            User user = User.builder()
+                    .userName("TestName")
+                    .userEmail("TestEmail")
+                    .build();
+            userRepository.save(user);
 
-            // 200명의 다른 유저 생성
-            List<User> users = new ArrayList<>();
-            for (int i = 2; i <= 200; i++) {
-                User user = User.builder()
-                        .userName("TestUser" + i)
-                        .userEmail("Test" + i + "@test.com")
-                        .build();
-                users.add(user);
-                userRepository.save(user);
-            }
-
-            // ... Items and Sections initialization ...
-
-            // 200명의 유저가 특정 섹션에 응모
-            Section targetSection = sectionRepository.findById(1L).orElse(null); // Assuming section with ID 1 exists
-            Item targetItem = itemRepository.findById(1L).orElse(null); // Assuming item with ID 1 exists
-
-            if(targetSection != null && targetItem != null) {
-                for (User user : users) {
-                    Raffle raffle = Raffle.builder()
-                            .raffleCount(1)
-                            .section(targetSection)
-                            .item(targetItem)
-                            .user(user)
-                            .build();
-                    raffleRepository.save(raffle);
-                }
-            }
-
-            // 기존에 생성한 200명의 유저 중 100명을 추가로 선택
-            List<User> additionalUsers = new ArrayList<>();
-            for (int i = 201; i <= 300; i++) {
-                User user = User.builder()
-                        .userName("TestUser" + i)
-                        .userEmail("Test" + i + "@test.com")
-                        .build();
-                additionalUsers.add(user);
-                userRepository.save(user);
-            }
-
-            // 기존에 생성한 Item과 Section 객체를 참조
-            Section targetSection1 = section1; // Assuming section1 is already created
-            Item targetItem1 = item; // Assuming item1 is already created
-
-            // 100명의 추가 유저가 item1과 section1에 응모
-            if(targetSection1 != null && targetItem1 != null) {
-                for (User user : additionalUsers) {
-                    Raffle raffle = Raffle.builder()
-                            .raffleCount(1)
-                            .section(targetSection1)
-                            .item(targetItem1)
-                            .user(user)
-                            .build();
-                    raffleRepository.save(raffle);
-                }
-            }
 
 
 

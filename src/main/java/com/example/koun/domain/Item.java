@@ -53,13 +53,11 @@ public class Item {
     @Column(name = "age_requirement")
     private String ageRequirement;
 
-    @Column(name="running_time")
+    @Column(name = "running_time")
     private String runningTime;
 
-    @Column(name="upload_time")
+    @Column(name = "upload_time")
     private LocalDate uploadTime;
-
-
 
 
     private String description;
@@ -78,7 +76,7 @@ public class Item {
     @Builder
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
             , int likeNum, String itemName, String post
-            , String ageRequirement, String description , LocalDate uploadTime , String runningTime) {
+            , String ageRequirement, String description, LocalDate uploadTime, String runningTime) {
 
 
         this.raffleQuantity = raffleQuantity;
@@ -90,8 +88,8 @@ public class Item {
         this.post = post;
         this.ageRequirement = ageRequirement;
         this.description = description;
-        this.runningTime=runningTime;
-        this.uploadTime=uploadTime;
+        this.runningTime = runningTime;
+        this.uploadTime = uploadTime;
 
 
     }
