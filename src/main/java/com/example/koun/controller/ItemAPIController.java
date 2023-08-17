@@ -48,7 +48,7 @@ public class ItemAPIController {
 //        if (item != null) {
 //            return new ResponseEntity<>(item, HttpStatus.OK);
 //        } else {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
 
