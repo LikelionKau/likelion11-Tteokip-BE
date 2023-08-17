@@ -13,9 +13,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SectionFindResponseDto {
     private Long id;
+    private String itemName;
+    private String sectionName;
     private int price;
     private int seatQuantity;
-    private String itemName;
+
+
 
 
     /*사용자에게 보여지는 구역의 정보*/
@@ -24,6 +27,7 @@ public class SectionFindResponseDto {
         this.price = entity.getPrice();
         this.seatQuantity = entity.getSeatQuantity();
         this.itemName = entity.getItem().getItemName();
+        this.sectionName = entity.getSectionName();
     }
 
 }

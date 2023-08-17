@@ -6,12 +6,13 @@ import com.example.koun.domain.Item;
 import com.example.koun.domain.Section;
 import com.example.koun.dto.SectionFindResponseDto;
 import com.example.koun.dto.SectionSaveRequestDto;
-import jakarta.transaction.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -37,7 +38,7 @@ public class SectionService {
     }
 
     //조회
-    @Transactional
+    @Transactional(readOnly=true)
     public SectionFindResponseDto findSection(Long id) {
         Section entity = sectionRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + id));
@@ -45,7 +46,7 @@ public class SectionService {
     }
 
     //콘서트에 해당하는 구역 리스트 조회
-    @Transactional
+    @Transactional(readOnly = true)
     public List<SectionFindResponseDto> findSectionsByItemId(Long itemId) {
         Item item = itemRepository.findById(itemId)
             .orElseThrow(() -> new IllegalArgumentException("해당 콘서트는 없습니다. id=" + itemId));
@@ -60,21 +61,21 @@ public class SectionService {
     }
 
     //구역의 가격 업데이트
-    @Transactional
-    public void updateSectionPrice(Long sectionId, int newPrice) {
-        Section section = sectionRepository.findById(sectionId)
-            .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + sectionId));
-
-        section.newSectionPrice(newPrice);
-    }
+//    @Transactional
+//    public void updateSectionPrice(Long sectionId, int newPrice) {
+//        Section section = sectionRepository.findById(sectionId)
+//            .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + sectionId));
+//
+//        section.newSectionPrice(newPrice);
+//    }
     //구역의 좌석수 업데이트
-    @Transactional
-    public void updateSectionSeatQuantity(Long sectionId, int newQuantity) {
-        Section section = sectionRepository.findById(sectionId)
-            .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + sectionId));
-
-        section.newSectionSeatQuantity(newQuantity);
-    }
+//    @Transactional
+//    public void updateSectionSeatQuantity(Long sectionId, int newQuantity) {
+//        Section section = sectionRepository.findById(sectionId)
+//            .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + sectionId));
+//
+//        section.newSectionSeatQuantity(newQuantity);
+//    }
 
     //구역 삭제
     @Transactional
