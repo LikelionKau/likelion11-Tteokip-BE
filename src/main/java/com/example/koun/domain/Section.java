@@ -60,10 +60,10 @@ public class Section {
     }
 
     //비즈니스로직
-    public void newSectionPrice(int newPrice) {
-        this.price = newPrice;
-    }
-    public void newSectionSeatQuantity(int newSeatQuantity) {
-        this.seatQuantity = newSeatQuantity;
-    }
+//    public void newSectionPrice(int newPrice) {
+//        this.price = newPrice;
+//    }
+//    public void newSectionSeatQuantity(int newSeatQuantity) {
+//        this.seatQuantity = newSeatQuantity;
+//    }
 }

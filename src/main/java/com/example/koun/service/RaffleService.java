@@ -123,6 +123,9 @@ public class RaffleService {
 
         Raffle raffle = raffleRepository.findById(raffleId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 응모가 없습니다. id=" + raffleId));
+        raffle.getItem().getRaffles().remove(raffle);
+        raffle.getUser().getRaffles().remove(raffle);
+        raffle.getSection().getRaffles().remove(raffle);
 
 
         raffleRepository.delete(raffle);
