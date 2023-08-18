@@ -17,7 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import java.util.Arrays;
+import java.util.List;
 
 
 @Component
@@ -26,21 +27,21 @@ public class InitDB {
     private final InitService initService;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         initService.dbInit1();
     }
 
     @Component
     @Transactional
     @RequiredArgsConstructor
-    static class InitService{
+    static class InitService {
 
         private final UserRepository userRepository;
         private final SectionRepository sectionRepository;
         private final ItemRepository itemRepository;
         private final RaffleRepository raffleRepository;
-        public void dbInit1(){
 
+        public void dbInit1() {
 
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -67,8 +68,6 @@ public class InitDB {
             LocalDate uploadTime8 = LocalDate.parse("2023-08-17", dateFormatter);
             LocalDateTime dateTime9 = LocalDateTime.parse("2023-08-25 18:00", formatter);
             LocalDate uploadTime9 = LocalDate.parse("2023-08-09", dateFormatter);
-
-
 
 
             Item item = Item.builder()
@@ -192,65 +191,6 @@ public class InitDB {
             itemRepository.save(item9);
 
 
-
-
-            Section section = Section.builder()
-                    .sectionName("스탠딩-가")
-                    .seatQuantity(150)
-                    .item(item)
-                    .price(120000)
-                    .build();
-            sectionRepository.save(section);
-
-            Section section1 = Section.builder()
-                    .sectionName("스탠딩-나")
-                    .seatQuantity(150)
-                    .price(120000)
-                    .item(item)
-                    .build();
-            sectionRepository.save(section1);
-
-            Section section2 = Section.builder()
-                    .sectionName("스탠딩-다")
-                    .seatQuantity(150)
-                    .item(item)
-                    .price(120000)
-                    .build();
-            sectionRepository.save(section2);
-
-            Section section3 = Section.builder()
-                    .sectionName("스탠딩-라")
-                    .seatQuantity(150)
-                    .item(item)
-                    .price(120000)
-                    .build();
-            sectionRepository.save(section3);
-
-            Section section4 = Section.builder()
-                    .sectionName("지정석-가")
-                    .seatQuantity(200)
-                    .item(item)
-                    .price(90000)
-                    .build();
-            sectionRepository.save(section4);
-
-            Section section5 = Section.builder()
-                    .sectionName("지정석-나")
-                    .seatQuantity(200)
-                    .item(item)
-                    .price(90000)
-                    .build();
-            sectionRepository.save(section5);
-
-            Section section6 = Section.builder()
-                    .sectionName("지정석-다")
-                    .seatQuantity(200)
-                    .item(item)
-                    .price(90000)
-                    .build();
-            sectionRepository.save(section6);
-
-
             User user = User.builder()
                     .userName("TestName")
                     .userEmail("TestEmail")
@@ -258,14 +198,41 @@ public class InitDB {
             userRepository.save(user);
 
 
+            List<Item> items = Arrays.asList(item, item1, item2, item3, item4, item5, item6, item7, item8, item9);
 
-
+            for (int i = 0; i < items.size(); i++) {
+                createSectionsForItem(items.get(i), i);
+            }
 
 
         }
+
+
+        public void createSectionsForItem(Item item, int index) {
+            String[] sectionNames = {"스탠딩-가", "스탠딩-나", "스탠딩-다", "스탠딩-라", "지정석-가", "지정석-나", "지정석-다"};
+            int[] seatQuantities;
+            int[] prices;
+
+            if (index % 2 == 0) { // 짝수 번째 아이템
+                seatQuantities = new int[]{150, 150, 150, 150, 200, 200, 200};
+                prices = new int[]{120000, 120000, 120000, 120000, 90000, 90000, 90000};
+            } else { // 홀수 번째 아이템
+                seatQuantities = new int[]{100, 100, 100, 100, 150, 150, 150};
+                prices = new int[]{100000, 100000, 100000, 100000, 80000, 80000, 80000};
+            }
+
+            for (int i = 0; i < sectionNames.length; i++) {
+                Section section = Section.builder()
+                        .sectionName(sectionNames[i])
+                        .seatQuantity(seatQuantities[i])
+                        .item(item)
+                        .price(prices[i])
+                        .build();
+                sectionRepository.save(section);
+            }
+
+        }
+
+
     }
-
-
-
-
 }
