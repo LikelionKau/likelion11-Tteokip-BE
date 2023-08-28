@@ -1,7 +1,6 @@
 package com.example.koun.login;
 
 
-
 import com.example.koun.dto.UserSaveRequestDto;
 import com.example.koun.dto.UserSaveResponseDto;
 import com.example.koun.login.auth.OAuthToken;
@@ -34,28 +33,27 @@ public class LoginController {
     private UserService userService;
 
 
-
-
     @RequestMapping(value = "/loginRedirect", method = RequestMethod.GET)
     public ResponseEntity<String> kakaoLogin(@RequestParam(value = "code", required = false) String code
             , HttpServletResponse httpResponse) throws Exception {
 //        System.out.println("카카오로부터 요청받은 인가코드 : " + code);
 
 
-
         RestTemplate rt = new RestTemplate();
 
+        //Header
         HttpHeaders headers = new org.springframework.http.HttpHeaders();
         headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 
+        //Body
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         params.add("client_id", "2cf364356a3329e6b0fca033d6447fbd");
         params.add("redirect_uri", "http://localhost:8080/loginRedirect");
         params.add("code", code);
 
+        //HTTP 객체
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params,
-
                 headers);
 
         ResponseEntity<String> response = rt.exchange(
@@ -88,7 +86,6 @@ public class LoginController {
         HttpHeaders headers2 = new org.springframework.http.HttpHeaders();
         headers2.add("Authorization", "Bearer " + oauthToken.getAccess_token());
         headers2.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-
 
 
         HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest2 = new HttpEntity<>(params,
@@ -156,7 +153,6 @@ public class LoginController {
 
 
     }
-
 
 
 }
