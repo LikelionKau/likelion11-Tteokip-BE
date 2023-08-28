@@ -95,7 +95,7 @@ public class RaffleService {
 
         // Raffle 엔티티 리스트를 RaffleResponseDto 리스트로 변환
         List<RaffleFindResponseDto> raffleFindResponseDtos = raffles.stream()
-                .map(RaffleFindResponseDto::new)
+            .map(RaffleFindResponseDto::new)
                 .collect(Collectors.toList());
 
         return raffleFindResponseDtos;
@@ -176,9 +176,6 @@ public class RaffleService {
         raffle.getUser().getRaffles().remove(raffle);
         raffle.getSection().getRaffles().remove(raffle);
 
-        raffle.getItem().getRaffles().remove(raffle);
-        raffle.getUser().getRaffles().remove(raffle);
-        raffle.getSection().getRaffles().remove(raffle);
 
 
         raffleRepository.delete(raffle);
