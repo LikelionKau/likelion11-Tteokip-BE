@@ -59,9 +59,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
-
-
-
     @OneToMany(mappedBy = "user")
     private List<Raffle> raffles = new ArrayList<>();
 
@@ -78,11 +75,7 @@ public class User {
     @Builder
     public User(String userName, String password, String userEmail, String phoneNum
                 , LocalDateTime userBirth, String account, char gender, String userAddress
-
                 , String oauth) {
-
-
-
         this.userName = userName;
         this.password = password;
         this.userEmail = userEmail;

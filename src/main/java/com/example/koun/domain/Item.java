@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import org.springframework.cglib.core.Local;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Table(name = "item")
 public class Item {
 
     @Id
@@ -76,7 +77,7 @@ public class Item {
     @Builder
     public Item(int raffleQuantity, String artist, LocalDateTime dateTime, String venue
             , int likeNum, String itemName, String post
-            , String ageRequirement, String description, LocalDate uploadTime, String runningTime) {
+            , String ageRequirement, String description, String runningTime, LocalDate uploadTime) {
 
 
         this.raffleQuantity = raffleQuantity;

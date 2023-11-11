@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,8 +63,8 @@ public class InitDB {
                 .artist("샘스미스")
                 .venue("KSP DOME")
                 .dateTime(dateTime)
-                .ageRequirement(19)
-                .runningTime(150)
+                .ageRequirement("19")
+                .runningTime("150")
                 .post("https://ticketimage.interpark.com/Play/image/large/23/23007654_p.gif")
                 .uploadTime(uploadTime)
                 .build();

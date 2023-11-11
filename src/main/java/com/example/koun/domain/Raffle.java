@@ -69,7 +69,6 @@ public class Raffle {
 
     @Builder
     public Raffle(int raffleCount, LocalDateTime raffleDrawDate,
-
                   User user, Item item, Section section) {
 
         this.raffleStatus = "false";
