@@ -4,6 +4,7 @@ package com.example.koun.dto;
 import com.example.koun.domain.Item;
 import com.example.koun.domain.Like;
 import com.example.koun.domain.User;
+import jakarta.persistence.Entity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,35 +12,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class LikeRequestDto {
-
-    private String itemName;
-    private String artist;
-    private String dateTime;
-    private String venue;
-    private String raffleState;
-    private String enter;
+    private Long userId;
+    private Long itemId;
 
 
-    @Builder
-    public LikeRequestDto(String itemName, String artist, String dateTime, String venue,
-        String raffleState) {
-        this.itemName = itemName;
-        this.artist = artist;
-        this.dateTime = dateTime;
-        this.venue = venue;
-        this.raffleState = raffleState;
-
-    }
-
-    public Like toEntity() {
+    public Like toEntity(User user ,Item item) {
         return Like.builder()
-            .itemName(itemName)
-            .artist(artist)
-            .dateTime(dateTime)
-            .venue(venue)
-            .raffleState(raffleState)
-//            .user(user)
-//            .item(item)
+            .user(user)
+            .item(item)
             .build();
+
     }
+
+
 }

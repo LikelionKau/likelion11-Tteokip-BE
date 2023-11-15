@@ -12,8 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SectionSaveRequestDto {
 
-    private int price;
+    // userId 추가
+    private Long userId;
 
+    private int price;
 
     private int seatQuantity;
 
@@ -21,8 +23,11 @@ public class SectionSaveRequestDto {
 
     private String sectionName;
 
+
+
     @Builder
-    public SectionSaveRequestDto(int price, int seatQuantity, String itemName, String sectionName) {
+    public SectionSaveRequestDto(Long userId, int price, int seatQuantity, String itemName, String sectionName) {
+        this.userId = userId;
         this.price = price;
         this.seatQuantity = seatQuantity;
         this.itemName = itemName;

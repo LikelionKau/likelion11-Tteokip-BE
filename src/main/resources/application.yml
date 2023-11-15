@@ -1,36 +1,29 @@
-#배포용
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://koundb.cseedxgtmzcd.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-#    username: admin
-#    password: koun12341
-#
-#
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      dialect: org.hibernate.dialect.MySQL5Dialect
-#      hibernate:
-#        format_sql: true
-#
-#
-#logging:
-#  level:
-#    org.hibernate.SQL: debug
-
-
-
-#개인 테스트용
 spring:
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:~/MinseoApplication
-    username: sa
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://koundb.cvrwbkhznvql.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: Est1!cebe
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 2cf364356a3329e6b0fca033d6447fbd
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            client-authentication-method: client_secret_post
+            scope:
+              - profile_nickname
+              - account_email
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
 
 
   jpa:
@@ -40,27 +33,65 @@ spring:
       hibernate:
         format_sql: true
 
+
+
+
 logging:
   level:
     org.hibernate.SQL: debug
 
+#logging:
+#  level:
+#    root: DEBUG
+#  file:
+#    name: logs/app.log
 
 
-  security:
-    oauth2:
-      client:
-        registration:
-          kakao:
-            client-id: 2cf364356a3329e6b0fca033d6447fbd
-            authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/loginRedirect
-            client-authentication-method: post
-            scope:
-              - profile_nickname
-              - account_email
-        provider:
-          kakao:
-            authorization_uri: https://kauth.kakao.com/oauth/authorize
-            token_uri: https://kauth.kakao.com/oauth/token
-            user-info-uri: https://kapi.kakao.com/v2/user/me
-            user_name_attribute: id
+
+#
+##배포용
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://koundb.cvrwbkhznvql.ap-northeast-2.rds.amazonaws.com:3306/kounDB?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: root
+#    password: Est1!cebe
+#
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      dialect: org.hibernate.dialect.MySQL5Dialect
+#      hibernate:
+#        format_sql: true
+#
+#
+#logging:
+#  level:
+#    org.hibernate.SQL: debug
+#
+#
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          kakao:
+#            client-id: 2cf364356a3329e6b0fca033d6447fbd
+#            authorization-grant-type: authorization_code
+#            redirect-uri: http://localhost:8080/loginRedirect
+#            client-authentication-method: post
+#            scope:
+#              - profile_nickname
+#              - account_email
+#        provider:
+#          kakao:
+#            authorization_uri: https://kauth.kakao.com/oauth/authorize
+#            token_uri: https://kauth.kakao.com/oauth/token
+#            user-info-uri: https://kapi.kakao.com/v2/user/me
+#            user_name_attribute: id
+#
+#
+
+
+

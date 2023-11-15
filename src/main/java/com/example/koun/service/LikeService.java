@@ -6,9 +6,9 @@ import com.example.koun.domain.Like;
 import com.example.koun.domain.User;
 import com.example.koun.dto.LikeRequestDto;
 import com.example.koun.dto.LikeResponseDto;
+import com.example.koun.repository.ItemRepository;
 import com.example.koun.repository.LikeRepository;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.example.koun.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,49 +19,33 @@ import org.springframework.transaction.annotation.Transactional;
 public class LikeService {
 
     private final LikeRepository likeRepository;
+    private final UserRepository userRepository;
+    private final ItemRepository itemRepository;
 
-    // 새로운 찜 등록
+    // DB에 저장
     @Transactional
-    public Long joinLike(LikeRequestDto likeRequestDto){
-        Like like = likeRequestDto.toEntity();
+    public Long joinLike(LikeRequestDto likeRequestDto) {
+        User user = userRepository.findById(likeRequestDto.getUserId()).orElseThrow(
+            () -> new IllegalArgumentException("해당 사용자가 없습니다. id = " + likeRequestDto.getUserId()));
+        Item item = itemRepository.findById(likeRequestDto.getItemId()).orElseThrow(
+            () -> new IllegalArgumentException("해당 아이템이 없습니다. id =" + likeRequestDto.getItemId()));
+
+        Like like = likeRequestDto.toEntity(user, item);
+
         return likeRepository.save(like).getId();
     }
 
-
-    // 모든 찜목록 조회
-    @Transactional(readOnly = true)
-    public List<LikeResponseDto> getAllLikes(){
-        List<Like> likes = likeRepository.findAll();
-        return likes.stream()
-            .map(LikeResponseDto::new)
-            .collect(Collectors.toList());
-    }
-
-    // 아이템 이름으로 찜 조회
-    @Transactional(readOnly = true)
-    public LikeResponseDto findLikesByName(String itemName) {
-        Like like = likeRepository.findByItemName(itemName)
-            .orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다 name: " + itemName));
-
-        return new LikeResponseDto(like);
-    }
-
-    // 아이템 아이디로 찜 조회
-    public LikeResponseDto findLikeById(Long likeId) {
-        Like like = likeRepository.findById(likeId)
-            .orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다. id:" + likeId));
-
-        return new LikeResponseDto(like);
-
-    }
-
-
-    // 찜 삭제
-    public void deleteItem(Long likeId){
+    // 좋아요 삭제
+    public void deleteLike(Long likeId) {
         Like like = likeRepository.findById(likeId)
             .orElseThrow(() -> new IllegalArgumentException("해당 상품이 없습니다. id=" + likeId));
         likeRepository.delete(like);
     }
+
+
+
+
+
 
 
 }

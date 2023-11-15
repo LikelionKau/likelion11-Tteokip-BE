@@ -3,9 +3,11 @@ package com.example.koun.dto;
 import com.example.koun.domain.Item;
 import java.time.format.DateTimeFormatter;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // 엔티티에서 값을 불러받을 때 사용되는 DTO
 @Data
+@NoArgsConstructor
 public class ItemResponseDto {
     private Long id;
     private int raffleQuantity; // 확장성
@@ -19,6 +21,7 @@ public class ItemResponseDto {
     private String post;
     private String uploadTime;
     private String ageRequirement;
+    private boolean userLikes;
 
     //파라미터로 Entity를 받으면 Dto로 변환
     public ItemResponseDto(Item item){
@@ -34,6 +37,7 @@ public class ItemResponseDto {
         this.post = item.getPost();
         this.uploadTime = item.getUploadTime().format(formatter2);
         this.ageRequirement=item.getAgeRequirement();
+
     }
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");

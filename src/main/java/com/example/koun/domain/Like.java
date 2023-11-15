@@ -2,6 +2,7 @@ package com.example.koun.domain;
 
 
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,22 +16,11 @@ import lombok.NoArgsConstructor;
 public class Like {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "like_id")
     private Long id;
 
-
 //    @Column(name = "item_name")
-    private String itemName;
-
-    private String raffleState;
-
-    private String venue;
-
-    private String artist;
-
-    private String dateTime;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -42,14 +32,27 @@ public class Like {
 
 
     @Builder
-    public Like(User user, Item item, String itemName, String raffleState, String venue, String artist, String dateTime) {
+    public Like(User user, Item item) {
+        setUser(user);
+        setItem(item);
+    }
+
+
+    public void setUser(User user){
+        if(this.user != null){
+            this.user.getLikes().remove(this);
+        }
         this.user = user;
+        user.getLikes().add(this);
+    }
+
+
+    public void setItem(Item item){
+        if(this.item != null){
+            this.item.getLikes().remove(this);
+        }
         this.item = item;
-        this.itemName = itemName;
-        this.raffleState = raffleState;
-        this.venue = venue;
-        this.artist = artist;
-        this.dateTime = dateTime;
+        item.getLikes().add(this);
     }
 
 
