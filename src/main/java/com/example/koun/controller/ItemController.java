@@ -23,15 +23,15 @@ public class ItemController {
     }
 
     @PostMapping("/register/save")
-    public String saveSection(ItemRequestDto requestDto) {
-        System.out.println("테스트 dto 이름" + requestDto.getItemName());
-        itemService.joinItem(requestDto);
+    public String saveSection(ItemRequestDto itemrequestDto) {
+        System.out.println("테스트 dto 이름" + itemrequestDto.getItemName());
+        itemService.joinItem(itemrequestDto);
         return "ItemAndSection";
     }
 
     @PostMapping("/save")
-    public String saveSection(SectionSaveRequestDto requestDto) {
-        sectionService.joinSection(requestDto);
+    public String saveSection(SectionSaveRequestDto sectionSaveRequestDto) {
+        sectionService.joinSection(sectionSaveRequestDto);
         return "ItemAndSection";
     }
 }

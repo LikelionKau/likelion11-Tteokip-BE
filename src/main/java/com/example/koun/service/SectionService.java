@@ -86,7 +86,6 @@ public class SectionService {
 
         section.getItem().getSections().remove(section);
 
-
         sectionRepository.delete(section);
     }
 

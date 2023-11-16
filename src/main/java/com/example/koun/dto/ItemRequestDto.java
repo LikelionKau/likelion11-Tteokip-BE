@@ -25,11 +25,12 @@ public class ItemRequestDto {
     private String post;
     private String uploadTime;
     private String ageRequirement;
+    private Boolean userLikes;
 
     // 1. 프론트에서 itemRequestDto에 대한 파라미터 정보를 받는다.
     // 2. 빌더 패턴으로 requestDto 생성
     @Builder
-    public ItemRequestDto(int raffleQuantity, String artist, String dateTime, String venue, int likeNum, String itemName, String description, String runningTime, String post, String uploadTime) {
+    public ItemRequestDto(int raffleQuantity, String artist, String dateTime, String venue, int likeNum, String itemName, String description, String runningTime, String post, String uploadTime, Boolean userLikes) {
         this.raffleQuantity = raffleQuantity;
         this.artist = artist;
         this.dateTime = dateTime;
@@ -40,6 +41,7 @@ public class ItemRequestDto {
         this.runningTime = runningTime;
         this.post = post;
         this.uploadTime = uploadTime;
+        this.userLikes = userLikes;
     }
 
 

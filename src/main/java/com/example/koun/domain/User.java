@@ -59,9 +59,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
-
-
-
     @OneToMany(mappedBy = "user")
     private List<Raffle> raffles = new ArrayList<>();
 
@@ -74,15 +71,15 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Like> likes = new ArrayList<>();
 
+//    // User 엔티티와 Item 엔티티 간의 관계를 정의
+//    @OneToMany(mappedBy = "user")
+//    private List<Item> items;
+
 
     @Builder
     public User(String userName, String password, String userEmail, String phoneNum
                 , LocalDateTime userBirth, String account, char gender, String userAddress
-
                 , String oauth) {
-
-
-
         this.userName = userName;
         this.password = password;
         this.userEmail = userEmail;
@@ -91,7 +88,6 @@ public class User {
         this.account = account;
         this.gender = gender;
         this.userAddress = userAddress;
-
         this.isDeleted = false;
         this.roleType = RoleType.USER;
         this.oauth = oauth;
