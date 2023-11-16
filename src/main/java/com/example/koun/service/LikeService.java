@@ -5,7 +5,6 @@ import com.example.koun.domain.Item;
 import com.example.koun.domain.Like;
 import com.example.koun.domain.User;
 import com.example.koun.dto.LikeRequestDto;
-import com.example.koun.dto.LikeResponseDto;
 import com.example.koun.repository.ItemRepository;
 import com.example.koun.repository.LikeRepository;
 import com.example.koun.repository.UserRepository;

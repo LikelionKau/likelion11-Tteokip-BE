@@ -40,6 +40,33 @@ logging:
   level:
     org.hibernate.SQL: debug
 
+
+
+
+  spring:
+    datasource:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:testdb # H2 메모리 데이터베이스 사용
+      username: sa
+      password:
+    h2:
+      console:
+        enabled: true # H2 콘솔 활성화
+    jpa:
+      hibernate:
+        ddl-auto: update # 데이터베이스 스키마 자동 업데이트 (create 또는 update 중 선택)
+
+  # 다른 설정들...
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
+
+
+
+
+
+
 #logging:
 #  level:
 #    root: DEBUG

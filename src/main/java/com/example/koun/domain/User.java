@@ -71,9 +71,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Like> likes = new ArrayList<>();
 
-    // User 엔티티와 Item 엔티티 간의 관계를 정의
-    @OneToMany(mappedBy = "user")
-    private List<Item> items;
+//    // User 엔티티와 Item 엔티티 간의 관계를 정의
+//    @OneToMany(mappedBy = "user")
+//    private List<Item> items;
 
 
     @Builder

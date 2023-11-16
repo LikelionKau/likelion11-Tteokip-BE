@@ -21,7 +21,7 @@ public class LikeAPIController {
     private final LikeService likeService;
     private final ItemService itemService;
 
-    // 새로운 좋아요 등록
+    // 새로운 좋아요 등록 -- 성공
     @PostMapping("/create")
     public ResponseEntity<Long> createLike(@RequestBody LikeRequestDto likeRequestDto) {
         Long likeId = likeService.joinLike(likeRequestDto);
@@ -29,7 +29,7 @@ public class LikeAPIController {
     }
 
 
-    // 좋아요 삭제
+    // 좋아요 삭제 -- 성공
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteLike(@RequestParam Long likeId) {
         likeService.deleteLike(likeId);

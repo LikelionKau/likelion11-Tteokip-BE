@@ -75,9 +75,9 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<Like> likes = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "user_id") // 이 부분은 실제 데이터베이스의 컬럼명과 일치해야 합니다.
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id") // 이 부분은 실제 데이터베이스의 컬럼명과 일치해야 합니다.
+//    private User user;
 
 
     @Builder

@@ -32,7 +32,7 @@ public class RaffleService {
         User user = userRepository.findById(requestDto.getUserId())
                 .orElseThrow(
                         () -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + requestDto.getUserId()));
-        Item item = itemRepository.findByItemNameAndUserId(requestDto.getItemName(), requestDto.getUserId())
+        Item item = itemRepository.findByItemName(requestDto.getItemName())
                 .orElseThrow(
                         () -> new IllegalArgumentException("해당 상품이 없습니다. id=" + requestDto.getItemName()));
         Section section = sectionRepository.findById(requestDto.getSectionId())

@@ -28,7 +28,7 @@ public class SectionService {
     //생성
     @Transactional
     public Long joinSection(SectionSaveRequestDto requestDto) {
-        Item item = itemRepository.findByItemNameAndUserId(requestDto.getItemName(),requestDto.getUserId())
+        Item item = itemRepository.findByItemName(requestDto.getItemName())
             .orElseThrow(
                 () -> new IllegalArgumentException("해당 상품이 없습니다. id=" + requestDto.getItemName()));
         Section section = requestDto.toEntity(item);
@@ -85,7 +85,6 @@ public class SectionService {
             .orElseThrow(() -> new IllegalArgumentException("해당 구역이 없습니다. id=" + sectionId));
 
         section.getItem().getSections().remove(section);
-
 
         sectionRepository.delete(section);
     }

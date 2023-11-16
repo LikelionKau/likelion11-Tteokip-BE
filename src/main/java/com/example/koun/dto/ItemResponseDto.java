@@ -22,6 +22,8 @@ public class ItemResponseDto {
     private String uploadTime;
     private String ageRequirement;
     private boolean userLikes;
+    private boolean userRaffle;
+    private Long likeId;
 
     //파라미터로 Entity를 받으면 Dto로 변환
     public ItemResponseDto(Item item){
@@ -37,7 +39,6 @@ public class ItemResponseDto {
         this.post = item.getPost();
         this.uploadTime = item.getUploadTime().format(formatter2);
         this.ageRequirement=item.getAgeRequirement();
-
     }
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
