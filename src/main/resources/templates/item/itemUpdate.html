@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>콘서트 등록</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      /*margin: 20px;*/
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      width: 70%;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      /*max-width: 600px;*/
+      margin: 0 auto;
+    }
+    form p {
+      color: red;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    tr:nth-child() {
+      display: flex;
+      flex-direction: column;
+    }
+    textarea {
+      width: 100%;
+      resize: vertical;
+    }
+    input[type="submit"] {
+      background-color: #26ddb1;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+      margin-right: 0;
+      font-weight: bold;
+      font-size: medium;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+
+
+</head>
+<body>
+<h1>콘서트 등록</h1>
+<form action="/item/itemUpdate" method="post" enctype="multipart/form-data">
+  <h2>Koun에 등록될 콘서트의 정보를 입력해주세요</h2>
+  <P>* 모든 항목은 필수 입력 사항입니다</P>
+  <table>
+    <tr>
+      <th> 콘서트 제목</th>
+      <td><input type="text" name="itemName" /></td>
+    </tr>
+    <tr>
+      <th> 가수 </th>
+      <td><input type="text" name="artist" /></td>
+    </tr>
+    <tr>
+      <th> 장소 </th>
+      <td><input type="text" name="venue" /></td>
+    </tr>
+    <tr>
+      <th> 일시</th>
+      <td><input type="text" name="dateTime" /><span>    예시) 2023.08.19(토) 오전6시</span></td>
+    </tr>
+    <tr>
+      <th> 제한연령</th>
+      <td><input type="text" name="ageRequirement" /></td>
+    </tr>
+    <tr>
+      <th>상세 내용</th>
+      <td><textarea name="description" cols="40" rows="10"></textarea></td>
+    </tr>
+    <tr>
+      <th>포스터 업로드</th>
+      <td><input type="file" name="post"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" value="등록하기" /></td>
+    </tr>
+  </table>
+</form>
+<!-- <a href="getBoardList.do">글 목록 가기</a> -->
+</body>
+</html>
